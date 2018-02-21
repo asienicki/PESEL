@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>PESEL</id>
+    <version>1.0.2</version>
+    <title>PESEL</title>
+    <authors>Artur Sienicki</authors>
+    <owners>Artur Sienicki</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/asienicki/PESEL/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/asienicki/PESEL</projectUrl>
+    <description>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</description>
+    <summary>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</summary>
+    <language>pl-PL</language>
+    <tags>PESEL</tags>
+  </metadata>
+  <files>
+    <file src="lib\net452\PESEL.dll" target="lib\net452\PESEL.dll" />
+  </files>
+</package>

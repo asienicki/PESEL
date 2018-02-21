@@ -4,7 +4,7 @@ using PESEL.Validators.Impl;
 
 namespace PESEL.Attributes
 {
-    class PeselAttribute : ValidationAttribute
+    public class PeselAttribute : ValidationAttribute
     {
         public bool IsValid(string pesel)
         {

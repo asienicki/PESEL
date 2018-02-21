@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PESEL</RootNamespace>
     <AssemblyName>PESEL</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\PeselAttribute.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="ValidationResults\Impl\CharsNotDigitValidationResult.cs" />
     <Compile Include="ValidationResults\Impl\FailValidationResult.cs" />
@@ -67,6 +70,12 @@
     <Compile Include="Validators\Impl\PeselValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationResults\Impl\ValidationResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PESEL.nuspec">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="readme.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
