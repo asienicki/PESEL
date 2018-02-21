@@ -3,7 +3,7 @@
 Projekt umożliwia walidację oraz generowanie numerów PESEL.
 
 ### Walidacja pesel
-PESEL można zwalidować przy użyciu klasy PeselValidator lub atrybutu: PeselAttribute, którym to można dekorować właściwości modelu.
+PESEL można zwalidować przy użyciu klasy **PeselValidator** lub atrybutu **PeselAttribute** w którym można dekorować właściwości modelu.
 
 #### Wykorzystanie klasy PeselValidator
 ```csharp
@@ -17,7 +17,7 @@ Assert.IsTrue(validationResult.IsValid);
 ```
 Obiekt ValidationResult przechowuje również informację o strukturze PESEL. Można z niej pobrać płeć oraz datę urodzenia.
 
-#### Wykorzystanie atrybutu Pesel
+#### Wykorzystanie atrybutu PESEL
 
 Dodajemy atrybut do właściwości w modelu i koniec. 
 ModelState będzie poprawny tylko wtedy jeśli PESEL zostanie poprawnie zwalidowany.
@@ -43,5 +43,12 @@ var validationResults = new List<ValidationResult>();
 Assert.IsTrue(Validator.TryValidateObject(model, context, validationResults, true));
 ```
 
+### Generowanie numerów PESEL
 
+Biblioteka umożliwia wygenerowanie kombinacji wszystkich numerów PESEL dla podanej daty urodzenia.
+Do generowania numerów PESEL służy metoda Generate z klasy Generator.
+```csharp
+var generator = new Generator();
 
+var peselList = generator.Generate(DateTime.Now.AddYears(-1));
+```
