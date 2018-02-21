@@ -1,37 +1,47 @@
-## Welcome to GitHub Pages
+## Powszechny Elektroniczny System Ewidencji Ludności (PESEL) 
 
-You can use the [editor on GitHub](https://github.com/asienicki/PESEL/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Projekt umożliwia walidację oraz generowanie numerów PESEL.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Walidacja pesel
+PESEL można zwalidować przy użyciu klasy PeselValidator lub atrybutu: PeselAttribute, którym to można dekorować właściwości modelu.
 
-### Markdown
+#### Wykorzystanie klasy PeselValidator
+```csharp
+var validator = new PeselValidator();
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+var entity = new Entity("02070803628");
 
-```markdown
-Syntax highlighted code block
+var validationResult = validator.Validate(entity);
 
-# Header 1
-## Header 2
-### Header 3
+Assert.IsTrue(validationResult.IsValid);
+```
+Obiekt ValidationResult przechowuje również informację o strukturze PESEL. Można z niej pobrać płeć oraz datę urodzenia.
 
-- Bulleted
-- List
+#### Wykorzystanie atrybutu Pesel
 
-1. Numbered
-2. List
+Dodajemy atrybut do właściwości w modelu i koniec. 
+ModelState będzie poprawny tylko wtedy jeśli PESEL zostanie poprawnie zwalidowany.
+```csharp
+using PESEL.Attributes;
 
-**Bold** and _Italic_ and `Code` text
+public class Model
+{
+    [Pesel]
+    public string Pesel { get; set; }
+}
+```
+Adekwatny test do wykonania ModelState.IsValid:
+```csharp
+var model = new Model
+{
+    Pesel = "02070803628"
+};
 
-[Link](url) and ![Image](src)
+var context = new ValidationContext(model, null, null);
+var validationResults = new List<ValidationResult>();
+
+Assert.IsTrue(Validator.TryValidateObject(model, context, validationResults, true));
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/asienicki/PESEL/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
