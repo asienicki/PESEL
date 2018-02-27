@@ -2,6 +2,12 @@
 
 Projekt umożliwia walidację oraz generowanie numerów PESEL.
 
+### Instalacja biblioteki
+Biblioteka znajduje się w repozytorium "NuGet Gallery". Paczkę można zainstalować wykonując poniższe polecenie:
+
+```
+Install-Package PESEL
+```
 ### Walidacja pesel
 PESEL można zwalidować przy użyciu klasy **PeselValidator** lub atrybutu **PeselAttribute** w którym można dekorować właściwości modelu.
 
