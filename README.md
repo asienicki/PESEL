@@ -3,8 +3,7 @@
 Projekt umożliwia walidację oraz generowanie numerów PESEL.
 
 ### Instalacja biblioteki
-Biblioteka znajduje się w repozytorium "NuGet Gallery". Paczkę można zainstalować wykonując poniższe polecenie:
-
+Biblioteka znajduje się w repozytorium ["NuGet Gallery"](https://www.nuget.org/packages/PESEL). Paczkę można zainstalować wykonując poniższe polecenie:
 ```
 Install-Package PESEL
 ```
