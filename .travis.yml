@@ -1,4 +1,3 @@
-os: windows
 language: csharp
 solution: PESEL.sln
 install:
