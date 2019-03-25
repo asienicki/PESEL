@@ -2,5 +2,11 @@ language: csharp
 solution: PESEL.sln
 install:
   - nuget restore PESEL.sln
+addons:
+  sonarcloud:
+    organization: "asienicki-github"
+    token:
+      secure: $h
 script:
   - xbuild /p:Configuration=Release PESEL.sln /p:TargetFrameworkVersion="v4.7.2"
+  - sonar-scanner
