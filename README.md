@@ -2,7 +2,7 @@
 
 Projekt umożliwia walidację oraz generowanie numerów PESEL.
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=alert_status)](https://sonarcloud.io/dashboard?id=asienicki_PESEL)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=alert_status)](https://sonarcloud.io/dashboard?id=asienicki_PESEL) [![Build Status](https://travis-ci.org/asienicki/PESEL.svg?branch=master)](https://travis-ci.org/asienicki/PESEL)
 
 ### Instalacja biblioteki
 Biblioteka znajduje się w repozytorium ["NuGet Gallery"](https://www.nuget.org/packages/PESEL). Paczkę można zainstalować wykonując poniższe polecenie:
