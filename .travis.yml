@@ -1,0 +1,6 @@
+language: csharp
+solution: PESEL.sln
+install:
+  - nuget restore PESEL.sln
+script:
+  - xbuild /p:Configuration=Release PESEL.sln /p:TargetFrameworkVersion="v4.7.2"
