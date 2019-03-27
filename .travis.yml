@@ -1,7 +1,24 @@
-#os: windows
-#dist: trusty
+dist: trusty
+sudo: required
+
 language: csharp
 solution: $solution_name
+
+addons:
+  sonarcloud:
+    organization: $sonar_organization_name
+    token: $sonar_token
+
+install:
+  - nuget restore PESEL.sln
+
+script:
+  - msbuild /p:Configuration=Release $solution_name
+  - sonar-scanner -Dsonar.verbose=true -X  
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
 
 notifications:
   email:
@@ -9,22 +26,3 @@ notifications:
       - $my_mail
     on_success: always # default: change
     on_failure: always # default: always
-
-install:
-  - nuget restore PESEL.sln
-script:
-  - msbuild /p:Configuration=Release $solution_name
-#- xbuild /p:Configuration=Release $solution_name /p:TargetFrameworkVersion="v4.7.2"
-#- sonar-scanner
-  - sonar-scanner -Dsonar.verbose=true -X
-  
-addons:
-  sonarcloud:
-    organization: $sonar_organization_name
-    token: $sonar_token
-#    token:
-#      secure: $sonar_token
-
-cache:
-  directories:
-    - '$HOME/.sonar/cache'
