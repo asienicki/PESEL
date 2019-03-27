@@ -1,21 +1,29 @@
 #os: windows
 #dist: trusty
 language: csharp
-solution: PESEL.sln
+solution: $solution_name
+
+notifications:
+  email:
+    recipients:
+      - $my_mail
+    on_success: always # default: change
+    on_failure: always # default: always
+
 install:
   - nuget restore PESEL.sln
 script:
-  - msbuild /p:Configuration=Release PESEL.sln
-#- xbuild /p:Configuration=Release PESEL.sln /p:TargetFrameworkVersion="v4.7.2"
+  - msbuild /p:Configuration=Release $solution_name
+#- xbuild /p:Configuration=Release $solution_name /p:TargetFrameworkVersion="v4.7.2"
 #- sonar-scanner
   - sonar-scanner -Dsonar.verbose=true -X
   
 addons:
   sonarcloud:
-    organization: "asienicki-github"
-    token: $h
+    organization: $sonar_organization_name
+    token: $sonar_token
 #    token:
-#      secure: $h
+#      secure: $sonar_token
 
 cache:
   directories:
