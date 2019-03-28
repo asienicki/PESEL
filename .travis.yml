@@ -10,7 +10,7 @@ addons:
     token: $sonar_token
 
 install:
-  - nuget restore PESEL.sln
+  - nuget restore $solution_name
 
 script:
   - msbuild /p:Configuration=Release $solution_name
