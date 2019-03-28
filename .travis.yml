@@ -16,3 +16,7 @@ addons:
     token: $h
 #    token:
 #      secure: $h
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
