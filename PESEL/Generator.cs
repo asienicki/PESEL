@@ -1,4 +1,6 @@
-﻿namespace PESEL
+﻿using System.Linq;
+
+namespace PESEL
 {
     using System;
     using System.Collections.Generic;
@@ -19,7 +21,7 @@
 
             if (dateTime >= DateTime.Now)
             {
-                return null;
+                return Enumerable.Empty<string>();
             }
 
             if (dateTime.Year < 1900 && dateTime.Year > 1800)
