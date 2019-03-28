@@ -14,7 +14,7 @@ install:
 
 script:
   - msbuild /p:Configuration=Release PESEL.sln
-  - sonar-scanner -Dsonar.verbose=true -X 
+  - sonar-scanner -Dsonar.verbose=true -X
 
 cache:
   directories:
