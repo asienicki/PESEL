@@ -7,7 +7,7 @@ solution: PESEL.sln
 addons:
   sonarcloud:
     organization: "asienicki-github"
-    token: $sonar_token
+    token: 3b99a854d90537f16331c51a2479ca602fdcd0e3
 
 install:
   - nuget restore PESEL.sln
