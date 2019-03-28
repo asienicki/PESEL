@@ -1,4 +1,6 @@
-﻿namespace PESEL
+﻿using System.Linq;
+
+namespace PESEL
 {
     using System;
     using System.Collections.Generic;
@@ -19,7 +21,7 @@
 
             if (dateTime >= DateTime.Now)
             {
-                return null;
+                return Enumerable.Empty<string>();
             }
 
             if (dateTime.Year < 1900 && dateTime.Year > 1800)
@@ -81,45 +83,6 @@
             var checkSum = calculator.Calculate(weights, pesel.Substring(0, 10));
 
             return checkSum;
-        }
-
-        public void SonarTrigger(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, object obj)
-        {
-            obj = null;
-
-            if (a > b)
-            {
-                if (b > c)
-                {
-                    if (c > d)
-                    {
-                        obj.GetType().ToString();
-                    }
-                }
-            }
-        }
-
-        public void SonarTrigger2(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, object obj)
-        {
-            obj = null;
-
-            if (a > b)
-            {
-                if (b > c)
-                {
-                    if (c > d)
-                    {
-                        obj.GetType().ToString();
-                    }
-                }
-            }
-        }
-
-
-        public void SonarTrigger3(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, object obj)
-        {
-            SonarTrigger2(a,b,c,d,e,f,g,h,i,j,obj);
-            SonarTrigger3(a, b, c, d, e, f, g, h, i, j, obj);
         }
 
         private IEnumerable<string> BuildPeselsFromRandomDigits(string peselDateString)

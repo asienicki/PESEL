@@ -37,7 +37,7 @@
             {
                 rok += 1900;
             }
-            else if (miesiac >= 21 & miesiac <= 32) //m + 20 dla 2000-2099
+            else if (miesiac >= 21 && miesiac <= 32) //m + 20 dla 2000-2099
             {
                 rok += 2000;
                 miesiac -= 20;
