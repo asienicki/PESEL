@@ -2,19 +2,19 @@ dist: trusty
 sudo: required
 
 language: csharp
-solution: $solution_name
+solution: PESEL.sln
 
 addons:
   sonarcloud:
-    organization: $sonar_organization_name
+    organization: "asienicki-github"
     token: $sonar_token
 
 install:
-  - nuget restore $solution_name
+  - nuget restore PESEL.sln
 
 script:
-  - msbuild /p:Configuration=Release $solution_name
-  - sonar-scanner -Dsonar.verbose=true -X  
+  - msbuild /p:Configuration=Release PESEL.sln
+  - sonar-scanner -Dsonar.verbose=true -X 
 
 cache:
   directories:
