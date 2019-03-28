@@ -4,17 +4,11 @@ sudo: required
 language: csharp
 solution: PESEL.sln
 
-addons:
-  sonarcloud:
-    organization: "asienicki-github"
-    token: 3b99a854d90537f16331c51a2479ca602fdcd0e3
-
 install:
   - nuget restore PESEL.sln
 
 script:
   - msbuild /p:Configuration=Release PESEL.sln
-  - sonar-scanner -Dsonar.verbose=true -X
 
 cache:
   directories:
