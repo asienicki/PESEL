@@ -1,6 +1,6 @@
 ﻿using PESEL.Attributes;
 
-namespace PESEL.NugetClientTests
+namespace PESEL.Tests
 {
     public class Model
     {
