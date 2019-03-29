@@ -6,7 +6,7 @@
 
         public Gender Gender { get; set; }
 
-        public Pesel PeselStruct { get; set; }
+        public Pesel PeselStruct;
 
         public Entity(string peselString)
         {
