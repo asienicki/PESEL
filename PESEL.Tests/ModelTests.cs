@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PESEL.Models;
 using PESEL.Validators.Impl;
 
-namespace PESEL.NugetClientTests
+namespace PESEL.Tests
 {
     [TestClass]
     public class ModelTests
