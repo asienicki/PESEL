@@ -1,6 +1,6 @@
 ﻿## Powszechny Elektroniczny System Ewidencji Ludności (PESEL) 
 
-[![NuGet](https://img.shields.io/nuget/v/PESEL.svg)](https://www.nuget.org/packages/PESEL/) [![Build Status](https://travis-ci.com/asienicki/PESEL.svg?branch=master)](https://travis-ci.com/asienicki/PESEL) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=alert_status)](https://sonarcloud.io/dashboard?id=asienicki_PESEL) [![Build status](https://ci.appveyor.com/api/projects/status/2fi7tdwy7wx25b9i?svg=true)](https://ci.appveyor.com/project/asienicki/pesel)
+[![NuGet](https://img.shields.io/nuget/v/PESEL.svg)](https://www.nuget.org/packages/PESEL/) [![Build Status](https://travis-ci.com/asienicki/PESEL.svg?branch=master)](https://travis-ci.com/asienicki/PESEL) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=alert_status)](https://sonarcloud.io/dashboard?id=asienicki_PESEL)
 
 Projekt umożliwia walidację oraz generowanie numerów PESEL.
 
