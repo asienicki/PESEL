@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using PESEL.Models;
-using PESEL.Validators.Impl;
-
-namespace PESEL.Attributes
+﻿namespace PESEL.Attributes
 {
+    using System.ComponentModel.DataAnnotations;
+    using Models;
+    using Validators.Impl;
+
     public class PeselAttribute : ValidationAttribute
     {
         public bool IsValid(string pesel)

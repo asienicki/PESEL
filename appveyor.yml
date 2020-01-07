@@ -1,7 +1,0 @@
-before_build:
- - nuget restore
-build_script:
- - choco install "sonarscanner-msbuild-net46" -y
- - SonarScanner.MSBuild.exe begin /k:"asienicki_PESEL" /d:"sonar.host.url=https://sonarcloud.io" /o:"asienicki-github" /d:"sonar.login=3b99a854d90537f16331c51a2479ca602fdcd0e3"
- - msbuild /verbosity:quiet "PESEL.sln"
- - SonarScanner.MSBuild.exe end /d:"sonar.login=3b99a854d90537f16331c51a2479ca602fdcd0e3"
