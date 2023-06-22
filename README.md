@@ -1,9 +1,9 @@
 ﻿## Powszechny Elektroniczny System Ewidencji Ludności (PESEL) 
 
-[![NuGet](https://img.shields.io/nuget/v/PESEL.svg)](https://www.nuget.org/packages/PESEL/)  PESEL
-[![NuGet](https://img.shields.io/nuget/v/PESEL.FluentValidation.svg)](https://www.nuget.org/packages/PESEL.FluentValidation/) PESEL.FluentValidation
-[![NuGet](https://img.shields.io/nuget/v/PESEL.System.ComponentModel.DataAnnotations.svg)](https://www.nuget.org/packages/PESEL.System.ComponentModel.DataAnnotations/) PESEL.System.ComponentModel.DataAnnotations
-[![NuGet](https://img.shields.io/nuget/v/PESEL.Generator.svg)](https://www.nuget.org/packages/PESEL.Generator/) PESEL.Generator
+- [![NuGet](https://img.shields.io/nuget/v/PESEL.svg)](https://www.nuget.org/packages/PESEL/)  PESEL
+- [![NuGet](https://img.shields.io/nuget/v/PESEL.FluentValidation.svg)](https://www.nuget.org/packages/PESEL.FluentValidation/) PESEL.FluentValidation
+- [![NuGet](https://img.shields.io/nuget/v/PESEL.System.ComponentModel.DataAnnotations.svg)](https://www.nuget.org/packages/PESEL.System.ComponentModel.DataAnnotations/) PESEL.System.ComponentModel.DataAnnotations
+- [![NuGet](https://img.shields.io/nuget/v/PESEL.Generator.svg)](https://www.nuget.org/packages/PESEL.Generator/) PESEL.Generator
 
 
 Projekt umożliwia walidację oraz generowanie numerów PESEL.
