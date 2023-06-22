@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PESEL.Tests
+﻿namespace PESEL.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Models;
@@ -28,7 +26,7 @@ namespace PESEL.Tests
 
             foreach (var pesel in peselList)
             {
-                var entity = new Entity(pesel);
+                var entity = new PeselEntity(pesel);
 
                 var validationResult = validator.Validate(entity);
 
@@ -40,7 +38,7 @@ namespace PESEL.Tests
         {
             var validator = new PeselValidator();
 
-            var entity = new Entity(peselString);
+            var entity = new PeselEntity(peselString);
 
             var validationResult = validator.Validate(entity);
 

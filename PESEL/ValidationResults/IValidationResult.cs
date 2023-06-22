@@ -1,6 +1,6 @@
 ﻿namespace PESEL.ValidationResults
 {
-    public interface IValidationResult
+    public interface IPeselValidationResult
     {
         bool IsValid { get;  }
 

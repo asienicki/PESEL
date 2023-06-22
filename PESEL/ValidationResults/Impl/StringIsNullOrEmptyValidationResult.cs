@@ -1,6 +1,6 @@
 ﻿namespace PESEL.ValidationResults.Impl
 {
-    public class StringIsNullOrEmptyValidationResult : FailValidationResult
+    public class StringIsNullOrEmptyValidationResult : FailPeselValidationResult
     {
         public override string Message => "StringIsNullOrEmpty";
     }

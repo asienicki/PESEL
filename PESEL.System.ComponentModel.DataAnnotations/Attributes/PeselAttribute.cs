@@ -1,16 +1,16 @@
-﻿namespace PESEL.Attributes
-{
-    using System.ComponentModel.DataAnnotations;
-    using Models;
-    using Validators.Impl;
+﻿using PESEL.Models;
+using PESEL.Validators.Impl;
+using System.ComponentModel.DataAnnotations;
 
+namespace PESEL.System.ComponentModel.DataAnnotations
+{
     public class PeselAttribute : ValidationAttribute
     {
         public bool IsValid(string pesel)
         {
             var peselValidator = new PeselValidator();
 
-            var validationResult = peselValidator.Validate(new Entity(pesel));
+            var validationResult = peselValidator.Validate(new PeselEntity(pesel));
 
             return validationResult.IsValid;
         }

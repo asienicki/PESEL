@@ -2,7 +2,7 @@
 
 namespace PESEL.ValidationResults.Impl
 {
-    public class ValidationResult : IValidationResult
+    public class ValidationResult : IPeselValidationResult
     {
         public bool IsValid { get; set; }
 

@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.181
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL", "PESEL\PESEL.csproj", "{3A87DE1A-F288-47DA-85E7-F64DBE2C66F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PESEL", "PESEL\PESEL.csproj", "{3A87DE1A-F288-47DA-85E7-F64DBE2C66F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL.Tests", "PESEL.Tests\PESEL.Tests.csproj", "{58066FCF-7D38-4DDE-9831-F0C3D60AF24F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL.Tests", "PESEL.Tests\PESEL.Tests.csproj", "{2096CC03-8BA2-4B1E-8B30-BEBAC462E01F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL.System.ComponentModel.DataAnnotations", "PESEL.System.ComponentModel.DataAnnotations\PESEL.System.ComponentModel.DataAnnotations.csproj", "{4E445434-85B3-46CC-9FBB-4E75CD5D70FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL.Generator", "PESEL.Generator\PESEL.Generator.csproj", "{8692BE6B-2BBD-4254-824C-982E8BDEA196}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PESEL.FluentValidation", "PESEL.FluentValidation\PESEL.FluentValidation.csproj", "{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +23,22 @@ Global
 		{3A87DE1A-F288-47DA-85E7-F64DBE2C66F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A87DE1A-F288-47DA-85E7-F64DBE2C66F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A87DE1A-F288-47DA-85E7-F64DBE2C66F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58066FCF-7D38-4DDE-9831-F0C3D60AF24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58066FCF-7D38-4DDE-9831-F0C3D60AF24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58066FCF-7D38-4DDE-9831-F0C3D60AF24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58066FCF-7D38-4DDE-9831-F0C3D60AF24F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2096CC03-8BA2-4B1E-8B30-BEBAC462E01F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2096CC03-8BA2-4B1E-8B30-BEBAC462E01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2096CC03-8BA2-4B1E-8B30-BEBAC462E01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2096CC03-8BA2-4B1E-8B30-BEBAC462E01F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E445434-85B3-46CC-9FBB-4E75CD5D70FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E445434-85B3-46CC-9FBB-4E75CD5D70FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E445434-85B3-46CC-9FBB-4E75CD5D70FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E445434-85B3-46CC-9FBB-4E75CD5D70FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8692BE6B-2BBD-4254-824C-982E8BDEA196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8692BE6B-2BBD-4254-824C-982E8BDEA196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8692BE6B-2BBD-4254-824C-982E8BDEA196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8692BE6B-2BBD-4254-824C-982E8BDEA196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@
 
     public class LengthValidator : IValidator
     {
-        public IValidationResult Validate(Entity entity)
+        public IPeselValidationResult Validate(PeselEntity entity)
         {
             if (entity.Pesel.Length == 11)
             {

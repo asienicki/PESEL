@@ -1,16 +1,12 @@
-﻿namespace PESEL.Models
+﻿using System;
+
+namespace PESEL.Models
 {
-    public class Entity
+    [Obsolete("Use PeselEntity instead of Entity")]
+    public class Entity : PeselEntity
     {
-        public string Pesel { get; set; }
-
-        public Gender Gender { get; set; }
-
-        public Pesel PeselStruct;
-
-        public Entity(string peselString)
+        public Entity(string peselString) : base(peselString)
         {
-            Pesel = peselString;
         }
     }
 }

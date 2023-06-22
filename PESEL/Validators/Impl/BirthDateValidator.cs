@@ -7,7 +7,7 @@
     
     public class BirthDateValidator : IValidator
     {
-        public IValidationResult Validate(Entity entity)
+        public IPeselValidationResult Validate(PeselEntity entity)
         {
             var birthDate = GetDateFromPesel(entity.Pesel);
 

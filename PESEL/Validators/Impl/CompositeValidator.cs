@@ -15,7 +15,7 @@
             _validators = validators;
         }
 
-        public IValidationResult Validate(Entity entity)
+        public IPeselValidationResult Validate(PeselEntity entity)
         {
             if (entity == null)
             {

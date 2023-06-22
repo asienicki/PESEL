@@ -7,7 +7,7 @@
 
     public class SumControlNumberValidator : IValidator
     {
-        public IValidationResult Validate(Entity entity)
+        public IPeselValidationResult Validate(PeselEntity entity)
         {
             var weights = new[] { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
 

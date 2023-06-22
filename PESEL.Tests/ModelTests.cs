@@ -42,7 +42,7 @@ namespace PESEL.Tests
         {
             var validator = new PeselValidator();
 
-            var entity = new Entity("02070803628");
+            var entity = new PeselEntity("02070803628");
 
             var validationResult = validator.Validate(entity);
 

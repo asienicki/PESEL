@@ -5,6 +5,6 @@
 
     public interface IValidator
     {
-        IValidationResult Validate(Entity entity);
+        IPeselValidationResult Validate(PeselEntity entity);
     }
 }

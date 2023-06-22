@@ -6,7 +6,7 @@
 
     public class StringIsNullOrEmptyValidator : IValidator
     {
-        public IValidationResult Validate(Entity entity)
+        public IPeselValidationResult Validate(PeselEntity entity)
         {
             if (string.IsNullOrWhiteSpace(entity.Pesel))
             {

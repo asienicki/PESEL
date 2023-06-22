@@ -7,7 +7,7 @@
 
     public class GenderValidator : IValidator
     {
-        public IValidationResult Validate(Entity entity)
+        public IPeselValidationResult Validate(PeselEntity entity)
         {
             entity.PeselStruct.GenderNumber 
                 = Convert.ToByte((int)Char.GetNumericValue(entity.Pesel[9]));

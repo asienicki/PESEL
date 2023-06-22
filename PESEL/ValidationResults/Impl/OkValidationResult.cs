@@ -1,6 +1,6 @@
 ﻿namespace PESEL.ValidationResults.Impl
 {
-    public class OkValidationResult : IValidationResult
+    public class OkValidationResult : IPeselValidationResult
     {
         public bool IsValid => true;
         

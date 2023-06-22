@@ -6,7 +6,7 @@
 
     public class RandomNumbersValidator : IValidator
     {
-        public IValidationResult Validate(Entity entity)
+        public IPeselValidationResult Validate(PeselEntity entity)
         {
             entity.PeselStruct.RandomNumbers = entity.Pesel.Substring(6, 3).ToCharArray();
 

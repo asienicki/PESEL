@@ -7,7 +7,7 @@ namespace PESEL.Validators.Impl
 
     public class PeselValidator
     {
-        public ValidationResult Validate(Entity entity)
+        public ValidationResult Validate(PeselEntity entity)
         {
             var factory = new FactoryValidator();
 
