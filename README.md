@@ -16,7 +16,7 @@ PESEL można zwalidować przy użyciu klasy **PeselValidator** lub atrybutu **Pe
 ```csharp
 var validator = new PeselValidator();
 
-var entity = new Entity("02070803628");
+var entity = new PeselEntity("02070803628");
 
 var validationResult = validator.Validate(entity);
 
@@ -24,7 +24,7 @@ Assert.IsTrue(validationResult.IsValid);
 ```
 Obiekt ValidationResult przechowuje również informację o strukturze PESEL. Można z niej pobrać płeć oraz datę urodzenia.
 
-#### Wykorzystanie atrybutu PESEL
+#### Wykorzystanie atrybutu PESEL - biblioteka PESEL.System.ComponentModel.DataAnnotation
 
 Dodajemy atrybut do właściwości w modelu i koniec. 
 ModelState będzie poprawny tylko wtedy jeśli PESEL zostanie poprawnie zwalidowany.
@@ -50,12 +50,31 @@ var validationResults = new List<ValidationResult>();
 Assert.IsTrue(Validator.TryValidateObject(model, context, validationResults, true));
 ```
 
-### Generowanie numerów PESEL
+#### Walidacja numeru PESEL z wykorzystaniem biblioteki PESEL.FluentValidation
+```
+using FluentValidation;
+using FluentValidation.PESEL;
+
+public class Customer
+{
+    public string Pesel { get; set; }
+}
+
+public class CustomerValidator : AbstractValidator<Customer>
+{
+    public CustomerValidator()
+    {
+        RuleFor(x => x.Pesel).PeselMustBeValid();
+    }
+}
+```
+
+### Generowanie numerów PESEL - biblioteka PESEL.Generator
 
 Biblioteka umożliwia wygenerowanie kombinacji wszystkich numerów PESEL dla podanej daty urodzenia.
 Do generowania numerów PESEL służy metoda Generate z klasy Generator.
 ```csharp
-var generator = new Generator();
+var generator = new PeselGenerator();
 
 var peselList = generator.Generate(DateTime.Now.AddYears(-1));
 ```
