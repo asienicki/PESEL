@@ -13,7 +13,7 @@ Biblioteka umożliwia użycie gotowej metody do zwalidowania numeru PESEL, rozrz
 Biblioteka znajduje się w repozytorium ["NuGet Gallery"](https://www.nuget.org/packages/FluentValidation.PESEL). 
 Paczkę można zainstalować wykonując poniższe polecenie:
 ```
-Install-Package FluentValidation.PESEL
+Install-Package PESEL.FluentValidation
 ```
 ### Przykładowe użycie biblioteki FluentValidation.PESEL
 
