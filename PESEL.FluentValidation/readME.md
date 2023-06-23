@@ -17,7 +17,7 @@ Install-Package PESEL.FluentValidation
 ```
 ### Przykładowe użycie biblioteki FluentValidation.PESEL
 
-```
+```cs
 using FluentValidation;
 using FluentValidation.PESEL;
 
