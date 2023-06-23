@@ -6,7 +6,6 @@ Biblioteka umożliwia generowanie numerów PESEL.
 - [Dokumentacja biblioteki PESEL](https://github.com/asienicki/PESEL/blob/master/PESEL/readme.md)
 - [Walidacja z użyciem atrybutów System.ComponentModel.DataAnnotation](https://github.com/asienicki/PESEL/blob/master/PESEL.System.ComponentModel.DataAnnotations/readME.md)
 - [Walidacja numeru PESEL z wykorzystaniem biblioteki PESEL.FluentValidation](https://github.com/asienicki/PESEL/blob/master/PESEL.FluentValidation/readME.md)
-- [Generowanie numerów PESEL](https://github.com/asienicki/PESEL/blob/master/PESEL.Generator/readME.md)
 
 ### Instalacja biblioteki
 Biblioteka znajduje się w repozytorium ["NuGet Gallery"](https://www.nuget.org/packages/PESEL.Generator). 
