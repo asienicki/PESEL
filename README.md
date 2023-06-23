@@ -73,12 +73,4 @@ public class CustomerValidator : AbstractValidator<Customer>
 }
 ```
 
-### Generowanie numerów PESEL - biblioteka PESEL.Generator
-
-Biblioteka umożliwia wygenerowanie kombinacji wszystkich numerów PESEL dla podanej daty urodzenia.
-Do generowania numerów PESEL służy metoda Generate z klasy Generator.
-```csharp
-var generator = new PeselGenerator();
-
-var peselList = generator.Generate(DateTime.Now.AddYears(-1));
-```
+### [Generowanie numerów PESEL](https://github.com/asienicki/PESEL/blob/master/PESEL.Generator/readME.md)
