@@ -13,15 +13,17 @@
             ValidatePesel("02070803628");
             ValidatePesel("54071304899");
             ValidatePesel("48011809618");
+
+            ValidateInvalidPesel("86155009618");
         }
-        
+
         [TestMethod]
         public void ValidatePeselFromGeneratorTest()
         {
             var generator = new Generator();
 
             var peselList = generator.Generate(DateTime.Now.AddYears(-1));
-            
+
             var validator = new PeselValidator();
 
             foreach (var pesel in peselList)
@@ -43,6 +45,17 @@
             var validationResult = validator.Validate(entity);
 
             Assert.IsTrue(validationResult.IsValid);
-        } 
+        }
+
+        private static void ValidateInvalidPesel(string peselString)
+        {
+            var validator = new PeselValidator();
+
+            var entity = new PeselEntity(peselString);
+
+            var validationResult = validator.Validate(entity);
+
+            Assert.IsFalse(validationResult.IsValid);
+        }
     }
 }
