@@ -4,7 +4,7 @@
     using Models;
     using ValidationResults;
     using ValidationResults.Impl;
-    
+
     public class BirthDateValidator : IValidator
     {
         public IPeselValidationResult Validate(PeselEntity entity)
@@ -58,7 +58,13 @@
                 miesiac -= 80;
             }
 
-            return new DateTime(rok, miesiac, dzien);
+            bool isDateTime = DateTime.TryParse($"{rok:0000}-{miesiac:00}-{dzien:00}", out DateTime dateTime);
+            if (!isDateTime)
+            {
+                return null;
+            }
+
+            return dateTime;
         }
     }
 }
