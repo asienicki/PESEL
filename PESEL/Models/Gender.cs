@@ -4,6 +4,6 @@
     {
         None = 0,
         Man = 1,
-        Woman =2
+        Woman = 2
     }
 }

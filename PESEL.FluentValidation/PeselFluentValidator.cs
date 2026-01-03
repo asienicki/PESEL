@@ -7,7 +7,8 @@ namespace FluentValidation.PESEL
     {
         public static IRuleBuilderOptions<T, TElement> PeselMustBeValid<T, TElement>(this IRuleBuilder<T, TElement> ruleBuilder)
         {
-            return ruleBuilder.Must((rootObject, list, context) => {
+            return ruleBuilder.Must((rootObject, list, context) =>
+            {
 
                 var factory = new FactoryValidator();
 

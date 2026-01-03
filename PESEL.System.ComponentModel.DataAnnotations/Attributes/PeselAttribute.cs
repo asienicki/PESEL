@@ -14,7 +14,7 @@ namespace PESEL.System.ComponentModel.DataAnnotations
 
             return validationResult.IsValid;
         }
-        
+
         public override bool IsValid(object value)
         {
             return IsValid(value as string);

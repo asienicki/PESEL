@@ -2,7 +2,7 @@
 {
     public interface IPeselValidationResult
     {
-        bool IsValid { get;  }
+        bool IsValid { get; }
 
         string Message { get; }
     }

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+	  <LangVersion>14.0</LangVersion>
 	  <Description>Rozszerzenie do FluentValidation dla biblioteki PESEL</Description>
 	  <Summary>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</Summary>
 	  <Company>Software Hero</Company>
@@ -25,11 +26,11 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\"/>
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.5.2" />
+    <PackageReference Include="FluentValidation" Version="11.12.0" />
     <PackageReference Include="PESEL" Version="2.0.0" />
   </ItemGroup>
 
