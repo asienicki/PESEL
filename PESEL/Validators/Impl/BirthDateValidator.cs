@@ -1,70 +1,72 @@
 ﻿namespace PESEL.Validators.Impl
 {
     using System;
+    using System.Globalization;
     using Models;
     using ValidationResults;
     using ValidationResults.Impl;
 
+    /// <summary>
+    /// Validates and projects birth date from PESEL.
+    /// 
+    /// Preconditions:
+    /// - PESEL contains digits only
+    /// - PESEL length >= 6
+    /// - DigitValidator executed earlier
+    /// </summary>
     public class BirthDateValidator : IValidator
     {
         public IPeselValidationResult Validate(PeselEntity entity)
         {
-            var birthDate = GetDateFromPesel(entity.Pesel);
+            var year = int.Parse(entity.Pesel.Substring(0, 2));
+            var month = int.Parse(entity.Pesel.Substring(2, 2));
+            var day = int.Parse(entity.Pesel.Substring(4, 2));
 
-            if (!birthDate.HasValue)
+            switch (month)
             {
-                return new InvalidDateValidator();
+                case >= 1 and <= 12://zwykły miesiąc
+                    year += 1900;
+                    break;
+
+                case >= 21 and <= 32://m + 20 dla 2000-2099
+                    year += 2000;
+                    month -= 20;
+                    break;
+
+                case >= 41 and <= 52://m+40 dla 2100 - 2199
+                    year += 2100;
+                    month -= 40;
+                    break;
+
+                case >= 61 and <= 72://m+60 dla 2200 - 2299
+                    year += 2200;
+                    month -= 60;
+                    break;
+
+                case >= 81 and <= 92://m+80 dla 1800 - 1899
+                    year += 1800;
+                    month -= 80;
+                    break;
+
+                default:
+                    return new InvalidMonthValidationResult();
             }
 
-            entity.PeselStruct.BirthDate = birthDate.Value;
+            bool isDateTime = DateTime.TryParseExact(
+                                $"{year:0000}-{month:00}-{day:00}",
+                                "yyyy-MM-dd",
+                                CultureInfo.InvariantCulture,
+                                DateTimeStyles.None,
+                                out var dateTime);
 
-            return new OkValidationResult();
-
-        }
-
-        public DateTime? GetDateFromPesel(string pesel)
-        {
-            var rok = int.Parse(pesel.Substring(0, 2));
-            var miesiac = int.Parse(pesel.Substring(2, 2));
-            var dzien = int.Parse(pesel.Substring(4, 2));
-
-            if (miesiac < 1 || miesiac > 92)
-            {
-                return null;
-            }
-
-            if (miesiac >= 1 && miesiac <= 12) //zwykły miesiąc
-            {
-                rok += 1900;
-            }
-            else if (miesiac >= 21 && miesiac <= 32) //m + 20 dla 2000-2099
-            {
-                rok += 2000;
-                miesiac -= 20;
-            }
-            else if (miesiac >= 41 && miesiac <= 52) // m+40 dla 2100 - 2199
-            {
-                rok += 2100;
-                miesiac -= 40;
-            }
-            else if (miesiac >= 61 && miesiac <= 72) //m+60 dla 2200 - 2299
-            {
-                rok += 2200;
-                miesiac -= 60;
-            }
-            else if (miesiac >= 81 && miesiac <= 92) //m+80 dla 1800 - 1899
-            {
-                rok += 1800;
-                miesiac -= 80;
-            }
-
-            bool isDateTime = DateTime.TryParse($"{rok:0000}-{miesiac:00}-{dzien:00}", out DateTime dateTime);
             if (!isDateTime)
             {
-                return null;
+                return new InvalidDateValidationResult();
             }
 
-            return dateTime;
+            entity.PeselStruct.BirthDate = dateTime;
+
+            return new OkValidationResult();
         }
     }
 }

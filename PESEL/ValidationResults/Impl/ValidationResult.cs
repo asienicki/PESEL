@@ -7,7 +7,7 @@ namespace PESEL.ValidationResults.Impl
         public bool IsValid { get; set; }
 
         public string Message { get; set; }
-        
+
         public Pesel Pesel { get; set; }
     }
 }

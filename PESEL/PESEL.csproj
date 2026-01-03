@@ -2,18 +2,19 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+	<LangVersion>14.0</LangVersion>
     <PackageProjectUrl>https://github.com/asienicki/PESEL</PackageProjectUrl>
     <Description>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</Description>
     <Summary>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</Summary>
     <Company>Software Hero</Company>
     <Authors>Artur Sienicki</Authors>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Copyright>Software Hero</Copyright>
     <Title>PESEL</Title>
     <PackageLicenseExpression></PackageLicenseExpression>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/asienicki/PESEL</RepositoryUrl>
-    <PackageReleaseNotes>Przeniosłem PeselAttribute do osobnej biblioteki: PESEL.System.ComponentModel.DataAnnotations. Klasę Generator przeniosłem do biblioteki PESEL.Generator.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fix walidacji daty urodzenia (PESEL) + rozszerzone testy domenowe.</PackageReleaseNotes>
     <PackageTags></PackageTags>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -26,7 +27,6 @@
     </None>
   </ItemGroup>
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\"/>
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
-
 </Project>

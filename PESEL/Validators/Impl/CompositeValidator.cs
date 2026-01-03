@@ -19,7 +19,7 @@
         {
             if (entity == null)
             {
-                return new ValidationResult();
+                return new NullEntityValidationResult();
             }
 
             foreach (var validator in _validators)
@@ -32,10 +32,7 @@
                 }
             }
 
-            return new ValidationResult
-            {
-                IsValid = true
-            };
+            return new OkValidationResult();
         }
     }
 }

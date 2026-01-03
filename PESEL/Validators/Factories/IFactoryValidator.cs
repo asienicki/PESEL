@@ -11,7 +11,7 @@ namespace PESEL.Validators.Factories
         StringIsNullOrEmptyValidator StringIsNullOrEmptyValidator();
 
         SumControlNumberValidator SumControlNumberValidator();
-        
+
         BirthDateValidator BirthDateValidator();
 
         GenderValidator GenderValidator();

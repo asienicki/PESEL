@@ -4,6 +4,13 @@
     using ValidationResults;
     using ValidationResults.Impl;
 
+    /// <summary>
+    /// Projects random digits (positions 7–9) from PESEL.
+    /// 
+    /// Preconditions:
+    /// - PESEL length >= 9
+    /// - LengthValidator executed earlier
+    /// </summary>
     public class RandomNumbersValidator : IValidator
     {
         public IPeselValidationResult Validate(PeselEntity entity)

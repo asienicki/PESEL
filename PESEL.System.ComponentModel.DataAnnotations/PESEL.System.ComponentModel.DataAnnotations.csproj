@@ -2,6 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+	  <LangVersion>14.0</LangVersion>
 	  <PackageProjectUrl>https://github.com/asienicki/PESEL</PackageProjectUrl>
 	  <Description>Atrybut do walidacji numeru PESEL z wykorzystaniem System.ComponentModel.Annotations</Description>
 	  <Summary>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Biblioteka udostępniająca walidację oraz generowanie numerów PESEL.</Summary>
