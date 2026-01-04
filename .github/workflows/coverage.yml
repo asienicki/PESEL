@@ -28,7 +28,7 @@ jobs:
     - name: Generate coverage badge
       uses: danielpalme/ReportGenerator-GitHub-Action@5
       with:
-        reports: coverage/**/coverage.cobertura.xml
+        reports: coverage/**/*.xml
         targetdir: coveragereport
         reporttypes: Svg
 
