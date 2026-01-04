@@ -26,11 +26,13 @@ jobs:
       run: dotnet tool install --global dotnet-sonarscanner
         
     - name: Sonar Begin
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         dotnet sonarscanner begin \
           /k:"asienicki_PESEL" \
           /o:"asienicki" \
-          /d:sonar.login="${{ secrets.SONAR_TOKEN }}" \
+          /d:sonar.login="$SONAR_TOKEN" \
           /d:sonar.cs.opencover.reportsPaths="coverage/coverage.opencover.xml" \
           /d:sonar.exclusions="**/bin/**,**/obj/**" \
           /d:sonar.test.inclusions="**/*Tests.cs"
@@ -49,5 +51,4 @@ jobs:
 
     - name: Sonar End
       run: |
-        dotnet sonarscanner end \
-          /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
