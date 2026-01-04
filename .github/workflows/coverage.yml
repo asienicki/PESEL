@@ -2,7 +2,7 @@ name: Coverage Badge
 
 permissions:
   contents: write
-  
+
 on:
   push:
     branches: [ "master" ]
@@ -19,28 +19,26 @@ jobs:
       with:
         dotnet-version: 10.0.x
 
-    - name: Test with coverage
+    - name: Run tests with coverage (all test projects)
       run: |
         dotnet test PESEL.sln \
           --collect:"XPlat Code Coverage" \
           --results-directory coverage
 
-    - name: Debug coverage output
+    - name: Verify coverage files
       run: |
-        echo "Listing coverage directory:"
-        ls -R .
-        echo "----"
-        find . -name "*.xml" || true
-    
+        echo "Found coverage files:"
+        find coverage -name "coverage.cobertura.xml"
+
     - name: Install ReportGenerator
-      run: dotnet tool install --global dotnet-reportgenerator-globaltool
-    
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.5.1
+
     - name: Generate coverage badge
       run: |
         reportgenerator \
           -reports:coverage/**/coverage.cobertura.xml \
           -targetdir:coveragereport \
-          -reporttypes:Svg
+          -reporttypes:Badges
 
     - name: Publish badge
       run: |
