@@ -13,6 +13,8 @@ permissions:
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
       - name: Checkout
@@ -67,8 +69,6 @@ jobs:
         run: dotnet tool install --global dotnet-sonarscanner --version 11.*
 
       - name: Sonar Begin
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           dotnet sonarscanner begin \
             /k:"asienicki_PESEL" \
