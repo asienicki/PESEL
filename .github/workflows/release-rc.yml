@@ -2,7 +2,7 @@ name: Release RC NuGet
 
 on:
   push:
-    branches: [master]
+    branches: [rc]
     tags-ignore:
       - 'v*'
 
