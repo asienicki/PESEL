@@ -24,14 +24,16 @@ jobs:
 
     - name: Install SonarScanner for .NET
       run: dotnet tool install --global dotnet-sonarscanner
-    
+        
     - name: Sonar Begin
       run: |
         dotnet sonarscanner begin \
           /k:"asienicki_PESEL" \
           /o:"asienicki" \
           /d:sonar.login="${{ secrets.SONAR_TOKEN }}" \
-          /d:sonar.cs.opencover.reportsPaths="coverage/coverage.opencover.xml"
+          /d:sonar.cs.opencover.reportsPaths="coverage/coverage.opencover.xml" \
+          /d:sonar.exclusions="**/bin/**,**/obj/**" \
+          /d:sonar.test.inclusions="**/*Tests.cs"
 
     - name: Test with coverage
       run: |
