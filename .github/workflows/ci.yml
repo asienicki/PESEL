@@ -2,9 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - rc
+      - "feat/**"
+      - "fix/**"
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - rc
 
 jobs:
   build-test:
