@@ -40,7 +40,7 @@ jobs:
         reportgenerator \
           -reports:coverage/**/coverage.cobertura.xml \
           -targetdir:coveragereport \
-          -reporttypes:Badge
+          -reporttypes:Svg
 
     - name: Publish badge
       run: |
