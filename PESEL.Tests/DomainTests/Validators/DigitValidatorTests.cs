@@ -38,7 +38,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("12A45", out _);
 
-            Assert.IsInstanceOfType(result, typeof(CharsNotDigitValidationResult));
+            Assert.IsInstanceOfType<CharsNotDigitValidationResult>(result);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("12#45", out _);
 
-            Assert.IsInstanceOfType(result, typeof(CharsNotDigitValidationResult));
+            Assert.IsInstanceOfType<CharsNotDigitValidationResult>(result);
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("12 45", out _);
 
-            Assert.IsInstanceOfType(result, typeof(CharsNotDigitValidationResult));
+            Assert.IsInstanceOfType< CharsNotDigitValidationResult>(result);
         }
     }
 }

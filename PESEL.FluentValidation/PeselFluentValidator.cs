@@ -21,7 +21,7 @@ namespace FluentValidation.PESEL
                     factory.SumControlNumberValidator(),
                     factory.GenderValidator());
 
-                var validationResult = validators.Validate(new Entity(list as string));
+                var validationResult = validators.Validate(new PeselEntity(list as string));
 
                 if (!validationResult.IsValid)
                 {

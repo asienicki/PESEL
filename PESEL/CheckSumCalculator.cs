@@ -2,6 +2,6 @@
 
 namespace PESEL
 {
-    [Obsolete]
+    [Obsolete("Use PeselChecksumCalculator instead")]
     public class CheckSumCalculator: PeselChecksumCalculator{}
 }

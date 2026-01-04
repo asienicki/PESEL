@@ -55,7 +55,7 @@ namespace PESEL.Tests.DomainTests.Validators
 
             var result = new GenderValidator().Validate(entity);
 
-            Assert.IsInstanceOfType(result, typeof(InvalidGenderValidationResult));
+            Assert.IsInstanceOfType<InvalidGenderValidationResult>(result);
         }
     }
 }
