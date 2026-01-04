@@ -25,6 +25,13 @@ jobs:
           --collect:"XPlat Code Coverage" \
           --results-directory coverage
 
+    - name: Debug coverage output
+      run: |
+        echo "Listing coverage directory:"
+        ls -R .
+        echo "----"
+        find . -name "*.xml" || true
+
     - name: Generate coverage badge
       uses: danielpalme/ReportGenerator-GitHub-Action@5
       with:
