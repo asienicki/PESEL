@@ -1,37 +1,42 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-	  <LangVersion>14.0</LangVersion>
-	  <Description>Rozszerzenie do FluentValidation dla biblioteki PESEL</Description>
-	  <Summary>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</Summary>
-	  <Company>Software Hero</Company>
-	  <Authors>Artur Sienicki</Authors>
-	  <Version>2.0.0</Version>
-	  <Copyright>Software Hero</Copyright>
-	  <Title>PESEL.FluentValidation</Title>
-	  <PackageLicenseExpression></PackageLicenseExpression>
-	  <RepositoryUrl>https://github.com/asienicki/PESEL</RepositoryUrl>
-	  <PackageReleaseNotes></PackageReleaseNotes>
-	  <PackageTags></PackageTags>
-	  <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-	  <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+		<LangVersion>14.0</LangVersion>
 
-  <ItemGroup>
-    <None Include="..\LICENSE.md" Link="LICENSE.md">
-      <PackagePath></PackagePath>
-      <Pack>True</Pack>
-    </None>
-  </ItemGroup>
+		<Title>PESEL.FluentValidation</Title>
+		<Description>Rozszerzenie FluentValidation dla biblioteki PESEL.</Description>
+		<Summary>Rozszerzenie FluentValidation dla biblioteki PESEL.</Summary>
 
+		<Company>Sharp Code</Company>
+		<Authors>Artur Sienicki</Authors>
+		<Copyright>Sharp Code</Copyright>
+
+		<RepositoryUrl>https://github.com/asienicki/PESEL</RepositoryUrl>
+
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>PESEL,validation,fluentvalidation,poland,identity</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<!-- README -->
 	<ItemGroup>
 		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
-	
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.12.0" />
-    <PackageReference Include="PESEL" Version="2.0.0" />
-  </ItemGroup>
+
+	<!-- Lokalny development -->
+	<ItemGroup Condition="'$(IsPacking)' != 'true'">
+		<ProjectReference Include="..\PESEL\PESEL.csproj" />
+	</ItemGroup>
+
+	<!-- Publikacja do NuGet -->
+	<ItemGroup Condition="'$(IsPacking)' == 'true'">
+		<PackageReference Include="PESEL" Version="2.0.1" />
+	</ItemGroup>
+
+	<!-- Pozostałe zależności -->
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="11.12.0" />
+	</ItemGroup>
 
 </Project>

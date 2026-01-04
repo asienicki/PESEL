@@ -127,6 +127,7 @@ jobs:
           echo "Packing NuGet version: ${{ steps.version.outputs.version }}"
           dotnet pack -c Release \
             /p:Version=${{ steps.version.outputs.version }} \
+            /p:IsPacking=true \
             -o ./nupkg
 
           echo "Generated packages:"

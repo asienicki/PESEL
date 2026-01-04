@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PESEL", "PESEL\PESEL.csproj", "{3A87DE1A-F288-47DA-85E7-F64DBE2C66F5}"
 EndProject
@@ -12,6 +12,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL.Generator", "PESEL.Generator\PESEL.Generator.csproj", "{8692BE6B-2BBD-4254-824C-982E8BDEA196}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PESEL.FluentValidation", "PESEL.FluentValidation\PESEL.FluentValidation.csproj", "{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{367175AD-5E6A-4D63-8E48-DA96C46AB615}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\codeql.yml = .github\workflows\codeql.yml
+		.github\workflows\coverage.yml = .github\workflows\coverage.yml
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		.github\workflows\release-rc.yml = .github\workflows\release-rc.yml
+		.github\workflows\sonarcloud.yml = .github\workflows\sonarcloud.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
