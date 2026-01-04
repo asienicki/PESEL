@@ -22,6 +22,15 @@ jobs:
       with:
         dotnet-version: 10.0.x
 
+    - name: Install SonarScanner for .NET
+      run: dotnet tool install --global dotnet-sonarscanner
+
+    - name: Sonar Begin
+      run: |
+        dotnet sonarscanner begin \
+          /d:sonar.login="${{ secrets.SONAR_TOKEN }}" \
+          /d:sonar.cs.opencover.reportsPaths="coverage/coverage.opencover.xml"
+
     - name: Test with coverage
       run: |
         dotnet test PESEL.sln \
@@ -34,8 +43,7 @@ jobs:
         echo "== coverage directory =="
         ls -R coverage || true
 
-    - name: Analyze with SonarCloud
-      uses: SonarSource/sonarcloud-github-action@ffc3010689be73b8e5ae0c57ce35968afd7909e8
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+    - name: Sonar End
+      run: |
+        dotnet sonarscanner end \
+          /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
