@@ -4,7 +4,7 @@
     {
         public static IEnumerable<object[]> Empty =>
         [
-            [null, "null value"],
+            [(string?)null, "null value"],
             ["", "empty string"],
             ["           ", "whitespace only"]
         ];

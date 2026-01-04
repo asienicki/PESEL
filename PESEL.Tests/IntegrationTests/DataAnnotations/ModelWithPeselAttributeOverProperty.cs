@@ -5,6 +5,6 @@ namespace PESEL.Tests.IntegrationTests.DataAnnotations
     public class ModelWithPeselAttributeOnProperty
     {
         [Pesel]
-        public string Pesel { get; set; }
+        public string? Pesel { get; set; }
     }
 }

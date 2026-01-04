@@ -1,12 +1,17 @@
 ﻿using PESEL.Models;
 using PESEL.Validators.Impl;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace PESEL.System.ComponentModel.DataAnnotations
 {
+    [AttributeUsage(
+    AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter,
+    AllowMultiple = false,
+    Inherited = true)]
     public class PeselAttribute : ValidationAttribute
     {
-        public bool IsValid(string pesel)
+        public static bool IsValid(string pesel)
         {
             var peselValidator = new PeselValidator();
 

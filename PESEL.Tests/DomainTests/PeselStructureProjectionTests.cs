@@ -9,6 +9,8 @@
     [TestCategory("Projection")]
     public class PeselStructureProjectionTests
     {
+        private static readonly char[] ExpectedRandomNumbers = { '5', '2', '7' };
+
         [TestMethod]
         public void Should_extract_all_pesel_parts_correctly()
         {
@@ -19,7 +21,7 @@
 
             Assert.AreEqual(new DateTime(1974, 04, 01), entity.PeselStruct.BirthDate);
 
-            CollectionAssert.AreEqual(new[] { '5', '2', '7' }, entity.PeselStruct.RandomNumbers);
+            CollectionAssert.AreEqual(ExpectedRandomNumbers, entity.PeselStruct.RandomNumbers);
 
             Assert.AreEqual(9, entity.PeselStruct.GenderNumber);
             Assert.AreEqual(5, entity.PeselStruct.ControlNumber);

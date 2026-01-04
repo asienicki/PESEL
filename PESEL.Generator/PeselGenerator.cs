@@ -30,7 +30,7 @@ namespace PESEL
             }
             else if (dateTime.Year < 1800)
             {
-                return null;
+                return Enumerable.Empty<string>();
             }
             else if (dateTime.Year > 1900 && dateTime.Year < 2000)
             {
@@ -75,11 +75,11 @@ namespace PESEL
         /// </summary>
         /// <param name="pesel">PESEL</param>
         /// <returns></returns>
-        protected int CalculateControlSum(string pesel)
+        protected static int CalculateControlSum(string pesel)
         {
             var weights = new[] { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
 
-            var calculator = new CheckSumCalculator();
+            var calculator = new PeselChecksumCalculator();
             var checkSum = calculator.Calculate(weights, pesel.Substring(0, 10));
 
             return checkSum;

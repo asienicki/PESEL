@@ -15,7 +15,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate(null, out _);
 
-            Assert.IsInstanceOfType(result, typeof(StringIsNullOrEmptyValidationResult));
+            Assert.IsInstanceOfType<StringIsNullOrEmptyValidationResult>(result);
         }
 
         [TestMethod]
@@ -23,7 +23,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate(string.Empty, out _);
 
-            Assert.IsInstanceOfType(result, typeof(StringIsNullOrEmptyValidationResult));
+            Assert.IsInstanceOfType<StringIsNullOrEmptyValidationResult>(result);
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("   ", out _);
 
-            Assert.IsInstanceOfType(result, typeof(StringIsNullOrEmptyValidationResult));
+            Assert.IsInstanceOfType<StringIsNullOrEmptyValidationResult>(result);
         }
 
         [TestMethod]

@@ -26,7 +26,7 @@ namespace PESEL.Tests.DomainTests.Validators
             // same digits, wrong checksum (last digit changed)
             var result = Validate("74040152794", out _);
 
-            Assert.IsInstanceOfType(result, typeof(InvalidCheckSumValidationResult));
+            Assert.IsInstanceOfType<InvalidCheckSumValidationResult>(result);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("02070803621", out _); // invalid checksum
 
-            Assert.IsInstanceOfType(result, typeof(InvalidCheckSumValidationResult));
+            Assert.IsInstanceOfType<InvalidCheckSumValidationResult>(result);
         }
     }
 }

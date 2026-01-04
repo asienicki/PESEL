@@ -72,7 +72,7 @@ namespace PESEL.Tests.DomainTests.Validators
 
             var result = composite.Validate(new PeselEntity("123"));
 
-            Assert.IsInstanceOfType(result, typeof(InvalidLengthValidationResult));
+            Assert.IsInstanceOfType<InvalidLengthValidationResult>(result);
             Assert.AreEqual(0, counter.CallCount);
         }
 
