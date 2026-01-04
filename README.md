@@ -1,4 +1,4 @@
-[![Build](https://github.com/asienicki/PESEL/actions/workflows/dotnet.yml/badge.svg)](https://github.com/asienicki/PESEL/actions/workflows/dotnet.yml)
+[![Build](https://github.com/asienicki/PESEL/actions/workflows/ci.yml/badge.svg)](https://github.com/asienicki/PESEL/actions/workflows/ci.yml)
 ![Coverage](https://raw.githubusercontent.com/asienicki/PESEL/master/badges/coverage.svg)
 ![License](https://img.shields.io/github/license/asienicki/PESEL)
 ![Last Commit](https://img.shields.io/github/last-commit/asienicki/PESEL)
