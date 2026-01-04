@@ -60,7 +60,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("024013", out _);
 
-            Assert.IsInstanceOfType(result, typeof(InvalidMonthValidationResult));
+            Assert.IsInstanceOfType<InvalidMonthValidationResult>(result);
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("022231", out _); // 31.02.2002
 
-            Assert.IsInstanceOfType(result, typeof(InvalidDateValidationResult));
+            Assert.IsInstanceOfType<InvalidDateValidationResult>(result);
         }
     }
 }

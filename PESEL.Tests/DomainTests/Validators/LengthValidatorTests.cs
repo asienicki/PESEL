@@ -22,7 +22,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("1234567890", out _); // 10
 
-            Assert.IsInstanceOfType(result, typeof(InvalidLengthValidationResult));
+            Assert.IsInstanceOfType<InvalidLengthValidationResult>(result);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("123456789012", out _); // 12
 
-            Assert.IsInstanceOfType(result, typeof(InvalidLengthValidationResult));
+            Assert.IsInstanceOfType<InvalidLengthValidationResult>(result);
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate(string.Empty, out _);
 
-            Assert.IsInstanceOfType(result, typeof(InvalidLengthValidationResult));
+            Assert.IsInstanceOfType<InvalidLengthValidationResult>(result);
         }
     }
 }
