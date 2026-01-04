@@ -30,11 +30,11 @@ jobs:
         id: changes
         run: |
           set -euo pipefail
-          BEFORE=${{ github.event.before }}
-          SHA=${{ github.sha }}
+
+          BEFORE="${{ github.event.before }}"
+          SHA="${{ github.sha }}"
 
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
-            # fallback for initial push / shallow history: compare with previous commit
             git fetch --prune --unshallow || true
             git diff --name-only HEAD^ HEAD > changes.txt || true
           else
@@ -42,9 +42,9 @@ jobs:
           fi
 
           if grep -E '(\.cs$|\.csproj$|Directory\.Build\.props|global\.json)' changes.txt; then
-            echo "code_changed=true" >> $GITHUB_OUTPUT
+            echo "code_changed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "code_changed=false" >> $GITHUB_OUTPUT
+            echo "code_changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Stop if no code changes
@@ -57,28 +57,34 @@ jobs:
         id: version
         run: |
           set -euo pipefail
-          STABLE_TAG=$(git tag --list 'v2.*' --exclude '*-rc.*' --sort=-v:refname | head -n 1)
+
+          # wszystkie tagi v2.*
+          ALL_TAGS=$(git tag --list 'v2.*' --sort=-v:refname)
+
+          # tylko stabilne (bez -rc)
+          STABLE_TAG=$(echo "$ALL_TAGS" | grep -Ev '\-rc\.' | head -n 1)
 
           if [ -z "$STABLE_TAG" ]; then
-            echo "ERROR: No stable v2 tag found"
+            echo "ERROR: No stable v2 tag found (expected e.g. v2.0.1)"
             exit 1
           fi
 
-          VERSION=${STABLE_TAG#v}
+          VERSION="${STABLE_TAG#v}"
           IFS='.' read MAJOR MINOR PATCH <<< "$VERSION"
-          NEXT_PATCH=$((PATCH+1))
+          NEXT_PATCH=$((PATCH + 1))
 
+          # ostatni RC dla NEXT_PATCH
           LAST_RC=$(git tag --list "v$MAJOR.$MINOR.$NEXT_PATCH-rc.*" --sort=-v:refname | head -n 1)
 
           if [ -z "$LAST_RC" ]; then
             RC=1
           else
-            RC=${LAST_RC##*.}
-            RC=$((RC+1))
+            RC="${LAST_RC##*.}"
+            RC=$((RC + 1))
           fi
 
           NEXT_VERSION="$MAJOR.$MINOR.$NEXT_PATCH-rc.$RC"
-          echo "version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+          echo "version=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -101,7 +107,7 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           dotnet nuget push ./nupkg/*.nupkg \
-            --api-key $NUGET_API_KEY \
+            --api-key "$NUGET_API_KEY" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
 
@@ -110,6 +116,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+
           TAG="v${{ steps.version.outputs.version }}"
           git tag "$TAG"
           git push origin "$TAG"
