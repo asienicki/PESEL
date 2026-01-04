@@ -6,27 +6,17 @@
     <PackageProjectUrl>https://github.com/asienicki/PESEL</PackageProjectUrl>
     <Description>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</Description>
     <Summary>Powszechny Elektroniczny System Ewidencji Ludności (PESEL). Projekt udostępniający walidację oraz generowanie numerów PESEL.</Summary>
-    <Company>Software Hero</Company>
+    <Company>Sharp Code</Company>
     <Authors>Artur Sienicki</Authors>
-    <Version>2.0.1</Version>
-    <Copyright>Software Hero</Copyright>
+    <Copyright>Sharp Code</Copyright>
     <Title>PESEL</Title>
-    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/asienicki/PESEL</RepositoryUrl>
-    <PackageReleaseNotes>Fix walidacji daty urodzenia (PESEL) + rozszerzone testy domenowe.</PackageReleaseNotes>
-    <PackageTags></PackageTags>
-    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageTags>PESEL,validation,poland,identity</PackageTags>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\LICENSE.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\" />
+    	<None Include="README.md" Pack="true" />
 	</ItemGroup>
 </Project>
