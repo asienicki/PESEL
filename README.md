@@ -4,6 +4,12 @@
 ![Last Commit](https://img.shields.io/github/last-commit/asienicki/PESEL)
 ![PRs](https://img.shields.io/github/issues-pr/asienicki/PESEL)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=coverage)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=bugs)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
+
+
 ## Powszechny Elektroniczny System Ewidencji Ludności (PESEL)
 Biblioteka .NET do **walidacji** oraz **generowania** numerów PESEL, z modularnymi integracjami dla popularnych mechanizmów walidacji.
 
