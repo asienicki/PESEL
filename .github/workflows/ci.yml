@@ -6,12 +6,10 @@ on:
   pull_request:
     branches: [ master ]
 
-permissions:
-  contents: write
-  pull-requests: read
-
 jobs:
   build-test:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
 
     steps:
@@ -44,6 +42,8 @@ jobs:
           path: coverage
 
   sonar:
+    permissions:
+      contents: read
     needs: build-test
     runs-on: ubuntu-latest
     if: |
@@ -85,6 +85,8 @@ jobs:
         run: dotnet sonarscanner end
 
   coverage-badge:
+    permissions:
+      contents: write
     needs: build-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
