@@ -13,8 +13,6 @@ permissions:
 jobs:
   build-test:
     runs-on: ubuntu-latest
-    env:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
       - name: Checkout
@@ -31,7 +29,7 @@ jobs:
       - name: Build
         run: dotnet build PESEL.sln --no-restore
 
-      - name: Test with coverage (opencover + cobertura)
+      - name: Test with coverage (opencover)
         run: |
           dotnet test PESEL.sln \
             --no-build \
@@ -48,7 +46,11 @@ jobs:
   sonar:
     needs: build-test
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false)
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
       - name: Checkout
@@ -73,7 +75,6 @@ jobs:
           dotnet sonarscanner begin \
             /k:"asienicki_PESEL" \
             /o:"asienicki" \
-            /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.cs.opencover.reportsPaths="coverage/**/coverage.opencover.xml" \
             /d:sonar.exclusions="**/bin/**,**/obj/**"
 
@@ -81,8 +82,6 @@ jobs:
         run: dotnet build PESEL.sln
 
       - name: Sonar End
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: dotnet sonarscanner end
 
   coverage-badge:
@@ -106,7 +105,7 @@ jobs:
       - name: Generate coverage badge
         run: |
           reportgenerator \
-            -reports:coverage/**/coverage.cobertura.xml \
+            -reports:coverage/**/coverage.opencover.xml \
             -targetdir:coveragereport \
             -reporttypes:Badges
 
