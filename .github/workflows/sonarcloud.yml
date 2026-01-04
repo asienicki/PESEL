@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -23,8 +24,8 @@ jobs:
         dotnet-version: 10.0.x
 
     - name: Install SonarScanner for .NET
-      run: dotnet tool install --global dotnet-sonarscanner
-        
+      run: dotnet tool install --global dotnet-sonarscanner --version 11.*
+
     - name: Sonar Begin
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -32,7 +33,7 @@ jobs:
         dotnet sonarscanner begin \
           /k:"asienicki_PESEL" \
           /o:"asienicki" \
-          /d:sonar.login="$SONAR_TOKEN" \
+          /d:sonar.token="$SONAR_TOKEN" \
           /d:sonar.cs.opencover.reportsPaths="coverage/coverage.opencover.xml" \
           /d:sonar.exclusions="**/bin/**,**/obj/**" \
           /d:sonar.test.inclusions="**/*Tests.cs"
@@ -50,5 +51,8 @@ jobs:
         ls -R coverage || true
 
     - name: Sonar End
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
-        dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+        dotnet sonarscanner end \
+          /d:sonar.token="$SONAR_TOKEN"
