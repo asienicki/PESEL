@@ -15,11 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PESEL.FluentValidation", "P
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{367175AD-5E6A-4D63-8E48-DA96C46AB615}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
 		.github\workflows\codeql.yml = .github\workflows\codeql.yml
-		.github\workflows\coverage.yml = .github\workflows\coverage.yml
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\workflows\release-rc.yml = .github\workflows\release-rc.yml
-		.github\workflows\sonarcloud.yml = .github\workflows\sonarcloud.yml
 	EndProjectSection
 EndProject
 Global
