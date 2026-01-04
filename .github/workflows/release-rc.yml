@@ -34,23 +34,34 @@ jobs:
           BEFORE="${{ github.event.before }}"
           SHA="${{ github.sha }}"
 
+          echo "Diff base:"
+          echo "  BEFORE=$BEFORE"
+          echo "  SHA=$SHA"
+
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "Using fallback diff: HEAD^..HEAD"
             git fetch --prune --unshallow || true
             git diff --name-only HEAD^ HEAD > changes.txt || true
           else
+            echo "Using diff: $BEFORE..$SHA"
             git diff --name-only "$BEFORE" "$SHA" > changes.txt || true
           fi
 
+          echo "Changed files:"
+          cat changes.txt || true
+
           if grep -E '(\.cs$|\.csproj$|Directory\.Build\.props|global\.json)' changes.txt; then
+            echo "Code changes detected"
             echo "code_changed=true" >> "$GITHUB_OUTPUT"
           else
+            echo "No code changes detected"
             echo "code_changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Stop if no code changes
         if: steps.changes.outputs.code_changed != 'true'
         run: |
-          echo "No code changes detected – skipping RC release"
+          echo "Stopping workflow – no code changes"
           exit 0
 
       - name: Calculate RC version
@@ -58,10 +69,10 @@ jobs:
         run: |
           set -euo pipefail
 
-          # wszystkie tagi v2.*
+          echo "Listing all v2.* tags:"
           ALL_TAGS=$(git tag --list 'v2.*' --sort=-v:refname)
+          echo "$ALL_TAGS"
 
-          # tylko stabilne (bez -rc)
           STABLE_TAG=$(echo "$ALL_TAGS" | grep -Ev '\-rc\.' | head -n 1)
 
           if [ -z "$STABLE_TAG" ]; then
@@ -69,21 +80,33 @@ jobs:
             exit 1
           fi
 
+          echo "Selected stable tag: $STABLE_TAG"
+
           VERSION="${STABLE_TAG#v}"
           IFS='.' read MAJOR MINOR PATCH <<< "$VERSION"
-          NEXT_PATCH=$((PATCH + 1))
 
-          # ostatni RC dla NEXT_PATCH
+          echo "Parsed version:"
+          echo "  MAJOR=$MAJOR"
+          echo "  MINOR=$MINOR"
+          echo "  PATCH=$PATCH"
+
+          NEXT_PATCH=$((PATCH + 1))
+          echo "Next PATCH: $NEXT_PATCH"
+
           LAST_RC=$(git tag --list "v$MAJOR.$MINOR.$NEXT_PATCH-rc.*" --sort=-v:refname | head -n 1)
 
           if [ -z "$LAST_RC" ]; then
             RC=1
+            echo "No previous RC found → starting rc.1"
           else
+            echo "Last RC found: $LAST_RC"
             RC="${LAST_RC##*.}"
             RC=$((RC + 1))
           fi
 
           NEXT_VERSION="$MAJOR.$MINOR.$NEXT_PATCH-rc.$RC"
+          echo "Calculated RC version: $NEXT_VERSION"
+
           echo "version=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Setup .NET
@@ -93,19 +116,31 @@ jobs:
 
       - name: Build & Test
         run: |
+          echo "Building with version: ${{ steps.version.outputs.version }}"
           dotnet build -c Release /p:Version=${{ steps.version.outputs.version }}
-          dotnet test  -c Release /p:Version=${{ steps.version.outputs.version }}
+
+          echo "Testing with version: ${{ steps.version.outputs.version }}"
+          dotnet test -c Release /p:Version=${{ steps.version.outputs.version }}
 
       - name: Pack
         run: |
+          echo "Packing NuGet version: ${{ steps.version.outputs.version }}"
           dotnet pack -c Release \
             /p:Version=${{ steps.version.outputs.version }} \
             -o ./nupkg
+
+          echo "Generated packages:"
+          ls -la ./nupkg
 
       - name: Publish RC to NuGet
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
+          echo "Publishing packages to NuGet:"
+          for pkg in ./nupkg/*.nupkg; do
+            echo "  $pkg"
+          done
+
           dotnet nuget push ./nupkg/*.nupkg \
             --api-key "$NUGET_API_KEY" \
             --source https://api.nuget.org/v3/index.json \
@@ -114,9 +149,14 @@ jobs:
       - name: Tag RC
         run: |
           set -euo pipefail
+
+          TAG="v${{ steps.version.outputs.version }}"
+          echo "Creating and pushing tag: $TAG"
+
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          TAG="v${{ steps.version.outputs.version }}"
           git tag "$TAG"
           git push origin "$TAG"
+
+          echo "Tag pushed: $TAG"
