@@ -57,4 +57,4 @@ jobs:
       - name: Sonar End
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: dotnet sonarscanner end
+        run: dotnet sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
