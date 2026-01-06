@@ -26,6 +26,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{FA235C2F-4
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci-jobs", "ci-jobs", "{58A0118C-5F8B-4422-84F6-12106F97EC43}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-test.yml = .github\workflows\build-test.yml
+		.github\workflows\sonar.yml = .github\workflows\sonar.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +61,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{58A0118C-5F8B-4422-84F6-12106F97EC43} = {367175AD-5E6A-4D63-8E48-DA96C46AB615}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A38F262B-2580-4569-900E-D1473FE6ADE0}

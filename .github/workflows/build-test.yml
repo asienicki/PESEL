@@ -22,6 +22,14 @@ jobs:
         with:
           dotnet-version: ${{ inputs.dotnet_version }}
 
+      - name: Cache NuGet
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
       - name: Restore
         run: dotnet restore PESEL.sln
 
