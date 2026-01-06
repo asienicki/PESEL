@@ -54,7 +54,7 @@ namespace PESEL.Tests.DomainTests.Validators
         {
             var result = Validate("12 45", out _);
 
-            Assert.IsInstanceOfType< CharsNotDigitValidationResult>(result);
+            Assert.IsInstanceOfType<CharsNotDigitValidationResult>(result);
         }
     }
 }
