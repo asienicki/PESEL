@@ -5,7 +5,7 @@ namespace PESEL
 {
     public class PeselChecksumCalculator
     {
-        public static int Calculate(int[] weights, string text)
+        public int Calculate(int[] weights, string text)
         {
             if (weights == null)
                 throw new ArgumentNullException(nameof(weights));

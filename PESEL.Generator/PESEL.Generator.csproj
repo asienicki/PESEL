@@ -33,7 +33,7 @@
 
 	<!-- Publikacja do NuGet -->
 	<ItemGroup Condition="'$(IsPacking)' == 'true'">
-		<PackageReference Include="PESEL" Version="2.1.1-rc.1" />
+		<PackageReference Include="PESEL" Version="2.0.1" />
 	</ItemGroup>
 	
 	<ItemGroup>

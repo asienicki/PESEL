@@ -12,18 +12,26 @@ namespace PESEL.Tests.DomainTests.Algorithms
         private static readonly int[] Weights =
             { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
 
+        private PeselChecksumCalculator _calculator = null!;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            _calculator = new PeselChecksumCalculator();
+        }
+
         [TestMethod]
         public void Should_throw_when_weights_is_null()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                PeselChecksumCalculator.Calculate(null, "7404015279"));
+                _calculator.Calculate(null, "7404015279"));
         }
 
         [TestMethod]
         public void Should_throw_when_text_is_null()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                PeselChecksumCalculator.Calculate(Weights, null));
+                _calculator.Calculate(Weights, null));
         }
 
         [TestMethod]
@@ -32,14 +40,14 @@ namespace PESEL.Tests.DomainTests.Algorithms
             var shortWeights = new[] { 1, 3, 7 };
 
             Assert.Throws<InvalidChecksumInputException>(() =>
-                PeselChecksumCalculator.Calculate(shortWeights, "740401"));
+                _calculator.Calculate(shortWeights, "740401"));
         }
 
         [TestMethod]
         public void Should_throw_when_text_contains_non_digit_character()
         {
             Assert.Throws<FormatException>(() =>
-                PeselChecksumCalculator.Calculate(Weights, "74040A5279"));
+                _calculator.Calculate(Weights, "74040A5279"));
         }
     }
 }

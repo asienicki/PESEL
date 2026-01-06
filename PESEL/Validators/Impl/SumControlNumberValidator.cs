@@ -18,7 +18,9 @@
         {
             var weights = new[] { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
 
-            var checkSum = PeselChecksumCalculator.Calculate(weights, entity.Pesel.Substring(0, 10));
+            var calculator = new PeselChecksumCalculator();
+
+            var checkSum = calculator.Calculate(weights, entity.Pesel.Substring(0, 10));
 
             if (checkSum == (int)char.GetNumericValue(entity.Pesel[10]))
             {
