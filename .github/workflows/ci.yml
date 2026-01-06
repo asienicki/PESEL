@@ -7,6 +7,17 @@ on:
     branches: [ master, rc ]
 
 jobs:
+  allow-rc-merge:
+    if: github.event_name == 'pull_request' && github.base_ref == 'rc'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure PR comes from master
+        run: |
+          if [ "${{ github.head_ref }}" != "master" ]; then
+            echo "Only master can be merged into rc"
+            exit 1
+          fi
+
   build-test:
     uses: ./.github/workflows/build-test.yml
 
