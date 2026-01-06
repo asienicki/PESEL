@@ -75,7 +75,7 @@ namespace PESEL
         /// </summary>
         /// <param name="pesel">PESEL</param>
         /// <returns></returns>
-        protected static int CalculateControlSum(string pesel)
+        internal static int CalculateControlSum(string pesel)
         {
             var weights = new[] { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
 
@@ -85,7 +85,7 @@ namespace PESEL
             return checkSum;
         }
 
-        private IEnumerable<string> BuildPeselsFromRandomDigits(string peselDateString)
+        internal static IEnumerable<string> BuildPeselsFromRandomDigits(string peselDateString)
         {
             for (var a = 0; a < 10; a++)
             {
