@@ -14,7 +14,7 @@
         {
             var validator = new PeselValidator();
 
-            var pesels = PeselGenerator.Generate(new DateTime(2000,01,01));
+            var pesels = PeselGenerator.Generate(new DateTime(2000, 01, 01));
 
             foreach (var pesel in pesels)
             {
