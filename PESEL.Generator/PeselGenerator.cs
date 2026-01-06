@@ -15,7 +15,7 @@ namespace PESEL
         /// </summary>
         /// <param name="dateTime">Data dla której ma być wygenerowany numer PESEL</param>
         /// <returns></returns>
-        public IEnumerable<string> Generate(DateTime dateTime)
+        public static IEnumerable<string> Generate(DateTime dateTime)
         {
             var month = 0;
 
@@ -79,8 +79,7 @@ namespace PESEL
         {
             var weights = new[] { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
 
-            var calculator = new PeselChecksumCalculator();
-            var checkSum = calculator.Calculate(weights, pesel.Substring(0, 10));
+            var checkSum = PeselChecksumCalculator.Calculate(weights, pesel.Substring(0, 10));
 
             return checkSum;
         }

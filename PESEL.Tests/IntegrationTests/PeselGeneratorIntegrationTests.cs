@@ -12,10 +12,9 @@
         [TestMethod]
         public void Should_validate_pesels_generated_for_given_birth_date()
         {
-            var generator = new PeselGenerator();
             var validator = new PeselValidator();
 
-            var pesels = generator.Generate(new DateTime(2000,01,01));
+            var pesels = PeselGenerator.Generate(new DateTime(2000,01,01));
 
             foreach (var pesel in pesels)
             {

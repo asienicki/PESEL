@@ -6,8 +6,6 @@
 
     public class CompositeValidator : IValidator
     {
-        public byte Order => 0;
-
         private readonly IValidator[] _validators;
 
         public CompositeValidator(IValidator[] validators)

@@ -1,13 +1,10 @@
-[![Build](https://github.com/asienicki/PESEL/actions/workflows/ci.yml/badge.svg)](https://github.com/asienicki/PESEL/actions/workflows/ci.yml)
-![Coverage](https://raw.githubusercontent.com/asienicki/PESEL/master/badges/coverage.svg)
 ![License](https://img.shields.io/github/license/asienicki/PESEL)
 ![Last Commit](https://img.shields.io/github/last-commit/asienicki/PESEL)
 ![PRs](https://img.shields.io/github/issues-pr/asienicki/PESEL)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=coverage)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=bugs)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=asienicki_PESEL)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=coverage)](https://sonarcloud.io/summary/overall?id=asienicki_PESEL&branch=master)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=bugs)](https://sonarcloud.io/summary/overall?id=asienicki_PESEL&branch=master)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=asienicki_PESEL&metric=code_smells)](https://sonarcloud.io/project/issues?issueStatuses=OPEN%2CCONFIRMED&id=asienicki_PESEL)
 
 
 ## Powszechny Elektroniczny System Ewidencji Ludności (PESEL)
