@@ -1,0 +1,43 @@
+name: build-test
+
+on:
+  workflow_call:
+    inputs:
+      dotnet_version:
+        type: string
+        default: 10.0.x
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ inputs.dotnet_version }}
+
+      - name: Restore
+        run: dotnet restore PESEL.sln
+
+      - name: Build
+        run: dotnet build PESEL.sln --no-restore
+
+      - name: Test with coverage (opencover)
+        run: |
+          dotnet test PESEL.sln \
+            --no-build \
+            /p:CollectCoverage=true \
+            /p:CoverletOutput=$(pwd)/coverage/coverage \
+            /p:CoverletOutputFormat=opencover
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
