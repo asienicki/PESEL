@@ -2,88 +2,16 @@ name: CI
 
 on:
   push:
-    branches:
-      - master
-      - rc
-      - "feat/**"
-      - "fix/**"
+    branches: [ master, rc, "feat/**", "fix/**" ]
   pull_request:
-    branches:
-      - master
-      - rc
+    branches: [ master, rc ]
 
 jobs:
   build-test:
-    permissions:
-      contents: read
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
-
-      - name: Restore
-        run: dotnet restore PESEL.sln
-
-      - name: Build
-        run: dotnet build PESEL.sln --no-restore
-
-      - name: Test with coverage (opencover)
-        run: |
-          dotnet test PESEL.sln \
-            --no-build \
-            /p:CollectCoverage=true \
-            /p:CoverletOutput=$(pwd)/coverage/coverage \
-            /p:CoverletOutputFormat=opencover
-
-      - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage
+    uses: ./.github/workflows/ci-jobs/build-test.yml
 
   sonar:
-    permissions:
-      contents: read
     needs: build-test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    env:
+    uses: ./.github/workflows/ci-jobs/sonar.yml
+    secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download coverage artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage
-          path: coverage
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
-
-      - name: Install SonarScanner
-        run: dotnet tool install --global dotnet-sonarscanner --version 11.*
-
-      - name: Sonar Begin
-        run: |
-          dotnet sonarscanner begin \
-            /k:"asienicki_PESEL" \
-            /o:"asienicki" \
-            /d:sonar.cs.opencover.reportsPaths="coverage/**/coverage.opencover.xml" \
-            /d:sonar.exclusions="**/bin/**,**/obj/**"
-
-      - name: Build (Sonar)
-        run: dotnet build PESEL.sln
-
-      - name: Sonar End
-        run: dotnet sonarscanner end
