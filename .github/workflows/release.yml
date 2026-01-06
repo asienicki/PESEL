@@ -1,0 +1,113 @@
+name: Release NuGet
+
+on:
+  push:
+    branches: [release]
+    tags-ignore:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: nuget-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: "!contains(github.event.head_commit.message, 'chore(version)')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Detect code changes
+        id: changes
+        run: |
+          set -euo pipefail
+
+          BEFORE="${{ github.event.before }}"
+          SHA="${{ github.sha }}"
+
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            git fetch --prune --unshallow || true
+            git diff --name-only HEAD^ HEAD > changes.txt || true
+          else
+            git diff --name-only "$BEFORE" "$SHA" > changes.txt || true
+          fi
+
+          if grep -E '(\.cs$|\.csproj$|Directory\.Build\.props|global\.json)' changes.txt; then
+            echo "code_changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "code_changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Stop if no code changes
+        if: steps.changes.outputs.code_changed != 'true'
+        run: |
+          echo "Stopping workflow – no code changes"
+          exit 0
+
+      - name: Calculate release version
+        id: version
+        run: |
+          set -euo pipefail
+
+          echo "Listing RC tags:"
+          RC_TAG=$(git tag --list 'v*-rc.*' --sort=-v:refname | head -n 1)
+
+          if [ -z "$RC_TAG" ]; then
+            echo "ERROR: No RC tag found"
+            exit 1
+          fi
+
+          echo "Latest RC tag: $RC_TAG"
+
+          VERSION="${RC_TAG#v}"
+          VERSION="${VERSION%-rc.*}"
+
+          echo "Release version: $VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build & Test
+        run: |
+          dotnet build -c Release /p:Version=${{ steps.version.outputs.version }}
+          dotnet test  -c Release /p:Version=${{ steps.version.outputs.version }}
+
+      - name: Pack
+        run: |
+          dotnet pack -c Release \
+            /p:Version=${{ steps.version.outputs.version }} \
+            /p:IsPacking=true \
+            -o ./nupkg
+
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push ./nupkg/*.nupkg \
+            --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
+
+      - name: Tag release
+        run: |
+          set -euo pipefail
+
+          TAG="v${{ steps.version.outputs.version }}"
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git tag "$TAG"
+          git push origin "$TAG"
