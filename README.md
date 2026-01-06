@@ -1,3 +1,4 @@
+[![CI](https://github.com/asienicki/PESEL/actions/workflows/ci.yml/badge.svg)](https://github.com/asienicki/PESEL/actions/workflows/ci.yml)
 ![License](https://img.shields.io/github/license/asienicki/PESEL)
 ![Last Commit](https://img.shields.io/github/last-commit/asienicki/PESEL)
 ![PRs](https://img.shields.io/github/issues-pr/asienicki/PESEL)
