@@ -38,7 +38,7 @@ jobs:
           dotnet test PESEL.sln \
             --no-build \
             /p:CollectCoverage=true \
-            /p:CoverletOutput=$(pwd)/coverage/ \
+            /p:CoverletOutput=$(pwd)/coverage/coverage \
             /p:CoverletOutputFormat=opencover
 
       - name: Upload coverage artifact
@@ -52,9 +52,7 @@ jobs:
       contents: read
     needs: build-test
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push' ||
-      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false)
+    if: github.ref == 'refs/heads/master'
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
