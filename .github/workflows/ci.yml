@@ -8,10 +8,10 @@ on:
 
 jobs:
   build-test:
-    uses: ./.github/workflows/ci-jobs/build-test.yml
+    uses: ./.github/workflows/build-test.yml
 
   sonar:
     needs: build-test
-    uses: ./.github/workflows/ci-jobs/sonar.yml
+    uses: ./.github/workflows/sonar.yml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
