@@ -1,0 +1,56 @@
+name: branch-merge-guard
+
+on:
+  pull_request:
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Enforce branch merge rules
+        env:
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          fail() {
+            local message="$1"
+
+            echo "❌ $message"
+
+            gh api repos/$REPO/issues/$PR_NUMBER/comments \
+              -f body="🚫 **Merge blocked**\n\n$message"
+
+            exit 1
+          }
+
+          echo "PR from '$HEAD' to '$BASE'"
+
+          if [[ "$BASE" == "master" ]]; then
+            if [[ "$HEAD" =~ ^feat/.* || "$HEAD" =~ ^fix/.* ]]; then
+              exit 0
+            fi
+            fail "Only branches **feat/*** or **fix/*** can be merged into **master**."
+          fi
+
+          if [[ "$BASE" == "rc" ]]; then
+            if [[ "$HEAD" == "master" ]]; then
+              exit 0
+            fi
+            fail "Only **master** can be merged into **rc**."
+          fi
+
+          if [[ "$BASE" == "release" ]]; then
+            if [[ "$HEAD" == "rc" ]]; then
+              exit 0
+            fi
+            fail "Only **rc** can be merged into **release**."
+          fi
+
+          fail "Merging into **$BASE** is not allowed by branch policy."
