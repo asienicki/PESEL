@@ -10,15 +10,15 @@ namespace PESEL.Tests.DomainTests.Validators
     public class RandomNumbersValidatorTests
     : BaseValidatorTests<RandomNumbersValidator>
     {
+        private static readonly char[] ExpectedRandomNumbers = { '5', '2', '7' };
+
         [TestMethod]
         public void Should_project_random_numbers_from_pesel()
         {
             var result = Validate("74040152795", out var entity);
 
             Assert.IsTrue(result.IsValid);
-            CollectionAssert.AreEqual(
-                new[] { '5', '2', '7' },
-                entity.PeselStruct.RandomNumbers);
+            CollectionAssert.AreEqual(ExpectedRandomNumbers, entity.PeselStruct.RandomNumbers);
         }
     }
 }
