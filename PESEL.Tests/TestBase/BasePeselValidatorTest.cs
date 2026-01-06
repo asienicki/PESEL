@@ -19,7 +19,7 @@
             Assert.IsFalse(result.IsValid);
         }
 
-        #pragma warning disable S3242 // Change return type to concrete type for performance
+#pragma warning disable S3242 // Change return type to concrete type for performance
         private static IPeselValidationResult Validate(string pesel)
         {
             var validator = new PeselValidator();
@@ -27,6 +27,6 @@
 
             return validator.Validate(entity);
         }
-        #pragma warning restore S3242
+#pragma warning restore S3242
     }
 }
