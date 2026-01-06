@@ -13,7 +13,7 @@ namespace PESEL.Tests.DomainTests.Validators
         [TestMethod]
         public void Should_fail_for_null()
         {
-            var result = Validate(null, out _);
+            var result = Validate(null!, out _);
 
             Assert.IsInstanceOfType<StringIsNullOrEmptyValidationResult>(result);
         }

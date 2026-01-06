@@ -2,6 +2,7 @@
 
 namespace PESEL.Tests.DomainTests.Algorithms
 {
+
     [TestClass]
     [TestCategory("Domain")]
     [TestCategory("Algorithm")]

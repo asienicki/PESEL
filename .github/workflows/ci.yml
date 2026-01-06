@@ -38,7 +38,7 @@ jobs:
           dotnet test PESEL.sln \
             --no-build \
             /p:CollectCoverage=true \
-            /p:CoverletOutput=$(pwd)/coverage/ \
+            /p:CoverletOutput=$(pwd)/coverage/coverage \
             /p:CoverletOutputFormat=opencover
 
       - name: Upload coverage artifact

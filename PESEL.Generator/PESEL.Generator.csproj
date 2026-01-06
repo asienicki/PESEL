@@ -35,5 +35,8 @@
 	<ItemGroup Condition="'$(IsPacking)' == 'true'">
 		<PackageReference Include="PESEL" Version="2.0.1" />
 	</ItemGroup>
-
+	
+	<ItemGroup>
+		<InternalsVisibleTo Include="Pesel.Tests" />
+	</ItemGroup>
 </Project>
