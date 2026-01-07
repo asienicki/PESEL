@@ -6,17 +6,17 @@ on:
       - master
       - feat/**
       - fix/**
-
+      
   pull_request:
     branches: [ master ]
 
 jobs:
   build-test:
-    if: github.event_name == 'pull_request'
     uses: ./.github/workflows/build-test.yml
 
   sonar:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build-test
     uses: ./.github/workflows/sonar.yml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
