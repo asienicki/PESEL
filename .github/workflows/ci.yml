@@ -7,7 +7,7 @@ on:
     - '.github/**'
     
   pull_request:
-    branches: [ master, rc ]
+    branches: [ master ]
     paths-ignore:
     - '.github/**'
 
