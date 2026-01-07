@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>ca4baeb6-bb7f-4484-ae71-709f8034a934</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+    <PackageReference Include="PESEL" Version="2.1.2" />
+    <PackageReference Include="PESEL.Generator" Version="2.1.2" />
+    <PackageReference Include="PESEL.System.ComponentModel.DataAnnotations" Version="2.1.2" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.11.10" />
+  </ItemGroup>
+
+<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+	<DebugType>none</DebugType>
+	<DebugSymbols>false</DebugSymbols>
+</PropertyGroup>
+
+	<PropertyGroup>
+		<DockerfilePath>Dockerfile.vs</DockerfilePath>
+	</PropertyGroup>
+
+</Project>
