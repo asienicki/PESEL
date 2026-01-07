@@ -100,6 +100,23 @@ jobs:
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
 
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & push Docker image (Release)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: |
+            ghcr.io/asienicki/pesel:latest
+            ghcr.io/asienicki/pesel:${{ steps.version.outputs.version }}
+
       - name: Tag release
         run: |
           set -euo pipefail
