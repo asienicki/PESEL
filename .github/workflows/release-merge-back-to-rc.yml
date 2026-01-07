@@ -22,7 +22,18 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: rc
-          head: release
+          branch: release
           title: "chore(sync): release -> rc"
           body: "Automatyczny merge-back po merge do release"
-          merge: true
+          
+      - name: Enable auto-merge
+        run: |
+          gh pr merge \
+            --auto \
+            --merge \
+            --repo "${{ github.repository }}" \
+            --base rc \
+            --head release || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
