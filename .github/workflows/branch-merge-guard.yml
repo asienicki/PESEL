@@ -32,25 +32,52 @@ jobs:
 
           echo "PR from '$HEAD' to '$BASE'"
 
+          #
+          # BASE: master
+          #
           if [[ "$BASE" == "master" ]]; then
+            # manual dev flow
             if [[ "$HEAD" =~ ^feat/.* || "$HEAD" =~ ^fix/.* ]]; then
               exit 0
             fi
-            fail "Only branches **feat/*** or **fix/*** can be merged into **master**."
+
+            # automatic sync
+            if [[ "$HEAD" == "rc" ]]; then
+              exit 0
+            fi
+
+            fail "Into **master** allowed only from **feat/***, **fix/*** or **rc**."
           fi
 
+          #
+          # BASE: rc
+          #
           if [[ "$BASE" == "rc" ]]; then
+            # manual promotion
             if [[ "$HEAD" == "master" ]]; then
               exit 0
             fi
-            fail "Only **master** can be merged into **rc**."
+
+            # automatic sync
+            if [[ "$HEAD" == "release" ]]; then
+              exit 0
+            fi
+
+            fail "Into **rc** allowed only from **master** or **release**."
           fi
 
+          #
+          # BASE: release
+          #
           if [[ "$BASE" == "release" ]]; then
             if [[ "$HEAD" == "rc" ]]; then
               exit 0
             fi
-            fail "Only **rc** can be merged into **release**."
+
+            fail "Into **release** allowed only from **rc**."
           fi
 
+          #
+          # Anything else
+          #
           fail "Merging into **$BASE** is not allowed by branch policy."
