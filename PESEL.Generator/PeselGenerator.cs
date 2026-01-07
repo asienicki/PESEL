@@ -6,7 +6,7 @@ namespace PESEL
     using System.Collections.Generic;
     using System.Globalization;
 
-    public class PeselGenerator
+    public static class PeselGenerator
     {
         #region Public methods
 

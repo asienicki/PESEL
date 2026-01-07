@@ -1,5 +1,7 @@
 using Scalar.AspNetCore;
 
+namespace PESEL.Examples.WebApi.Extensions;
+
 public static class ScalarDocumentationExtensions
 {
     public static IApplicationBuilder EnableScalarDocs(this WebApplication app)
