@@ -36,5 +36,4 @@ flowchart LR
   FIX  -. blocked .-> RC
   FIX  -. blocked .-> RELEASE
   MASTER -. blocked .-> RELEASE
-
 ```
