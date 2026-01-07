@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PESEL", "PESEL\PESEL.csproj", "{3A87DE1A-F288-47DA-85E7-F64DBE2C66F5}"
 EndProject
@@ -13,23 +13,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL.Generator", "PESEL.Ge
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PESEL.FluentValidation", "PESEL.FluentValidation\PESEL.FluentValidation.csproj", "{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{367175AD-5E6A-4D63-8E48-DA96C46AB615}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\ci.yml = .github\workflows\ci.yml
-		.github\workflows\codeql.yml = .github\workflows\codeql.yml
-		.github\workflows\release-rc.yml = .github\workflows\release-rc.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{FA235C2F-4614-44E1-A52A-59A5D5D7C217}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci-jobs", "ci-jobs", "{58A0118C-5F8B-4422-84F6-12106F97EC43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PESEL.Examples.WebApi", "PESEL.Examples.WebApi\PESEL.Examples.WebApi.csproj", "{2DA0A309-4C61-7EAC-0D23-99B5A7B06F74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{9C0DA3C5-BB02-4286-A8BC-3C25AE3F3436}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build-test.yml = .github\workflows\build-test.yml
-		.github\workflows\sonar.yml = .github\workflows\sonar.yml
+		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
 Global
@@ -58,12 +52,13 @@ Global
 		{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB6B5B4A-F27F-42C7-99D1-9126E66C81EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA0A309-4C61-7EAC-0D23-99B5A7B06F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA0A309-4C61-7EAC-0D23-99B5A7B06F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA0A309-4C61-7EAC-0D23-99B5A7B06F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA0A309-4C61-7EAC-0D23-99B5A7B06F74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{58A0118C-5F8B-4422-84F6-12106F97EC43} = {367175AD-5E6A-4D63-8E48-DA96C46AB615}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A38F262B-2580-4569-900E-D1473FE6ADE0}
