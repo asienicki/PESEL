@@ -1,0 +1,7 @@
+services:
+  pesel:
+    image: ghcr.io/asienicki/pesel:latest
+    container_name: pesel
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
