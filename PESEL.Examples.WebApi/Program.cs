@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.HttpOverrides;
+using PESEL.Examples.WebApi.Extensions;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,4 +24,4 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.MapPeselEndpoints();
 
-app.Run();
+await app.RunAsync();

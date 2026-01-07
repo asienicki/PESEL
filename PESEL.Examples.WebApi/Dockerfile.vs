@@ -11,10 +11,10 @@ COPY ["PESEL.Examples.WebApi/PESEL.Examples.WebApi.csproj", "PESEL.Examples.WebA
 RUN dotnet restore "./PESEL.Examples.WebApi/PESEL.Examples.WebApi.csproj"
 COPY . .
 WORKDIR "/src/PESEL.Examples.WebApi"
-RUN dotnet build "./PESEL.Examples.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./PESEL.Examples.WebApi.csproj" -c "$BUILD_CONFIGURATION" -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "./PESEL.Examples.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./PESEL.Examples.WebApi.csproj" -c "$BUILD_CONFIGURATION" -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
