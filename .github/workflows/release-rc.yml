@@ -3,6 +3,8 @@ name: Release RC NuGet
 on:
   push:
     branches: [rc]
+    paths-ignore:
+      - '.github/**'
     tags-ignore:
       - 'v*'
 

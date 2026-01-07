@@ -1,0 +1,28 @@
+name: release -> rc merge-back
+
+on:
+  push:
+    branches: [release]
+    paths-ignore:
+      - '.github/**'
+
+jobs:
+  merge-back:
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Auto merge release -> rc
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: rc
+          head: release
+          title: "chore(sync): release -> rc"
+          body: "Automatyczny merge-back po merge do release"
+          merge: true

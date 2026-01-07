@@ -1,0 +1,29 @@
+name: rc -> master merge-back
+
+on:
+  push:
+    branches: [rc]
+    paths-ignore:
+      - '.github/**'
+
+jobs:
+  merge-back:
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Auto merge rc -> master
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: master
+          head: rc
+          title: "chore(sync): rc -> master"
+          body: "Automatyczny merge-back po merge do rc"
+          merge: true
