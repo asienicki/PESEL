@@ -16,19 +16,15 @@ flowchart LR
 
   %% Development flow
   FEAT -->|PR| MASTER
-  FIX -->|PR| MASTER
+  FIX  -->|PR| MASTER
 
   %% Promotion flow
   MASTER -->|PR| RC
-  RC -->|PR| RELEASE
+  RC     -->|PR| RELEASE
 
   %% Publishing
-  RC -->|publish RC| NUGET_RC
+  RC      -->|publish RC| NUGET_RC
   RELEASE -->|publish| NUGET_REL
-
-  %% Automatic merge-back (sync)
-  RC -->|auto PR + merge| MASTER
-  RELEASE -->|auto PR + merge| RC
 
   %% Guards / blocked paths
   FEAT -. blocked .-> RC
@@ -36,4 +32,5 @@ flowchart LR
   FIX  -. blocked .-> RC
   FIX  -. blocked .-> RELEASE
   MASTER -. blocked .-> RELEASE
+
 ```
