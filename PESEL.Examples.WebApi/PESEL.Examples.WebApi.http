@@ -1,0 +1,49 @@
+@host = http://localhost:5222
+
+### ===============================
+### Validate PESEL – valid example
+### ===============================
+GET {{host}}/api/pesel/validate/44051401458
+Accept: application/json
+
+###
+
+### =================================
+### Validate PESEL – invalid example
+### =================================
+GET {{host}}/api/pesel/validate/12345678901
+Accept: application/json
+
+###
+
+### =================================
+### Generate PESEL – default take (20)
+### =================================
+GET {{host}}/api/pesel/generate?date=1990-01-01
+Accept: application/json
+
+###
+
+### =================================
+### Generate PESEL – custom take
+### =================================
+GET {{host}}/api/pesel/generate?date=1985-05-12&take=10
+Accept: application/json
+
+###
+
+### =================================
+### Generate PESEL – invalid date (future)
+### =================================
+GET {{host}}/api/pesel/generate?date=2100-01-01
+Accept: application/json
+
+###
+
+### =================================
+### Generate PESEL – invalid take (too large)
+### =================================
+GET {{host}}/api/pesel/generate?date=1990-01-01&take=5000
+Accept: application/json
+
+###
