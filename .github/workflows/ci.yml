@@ -2,10 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [ master, rc, "feat/**", "fix/**" ]
-    paths-ignore:
-    - '.github/**'
-    
+    branches: [ "feat/**", "fix/**" ]
+
   pull_request:
     branches: [ master ]
 
@@ -14,6 +12,7 @@ jobs:
     uses: ./.github/workflows/build-test.yml
 
   sonar:
+    if: github.event_name == 'pull_request'
     needs: build-test
     uses: ./.github/workflows/sonar.yml
     secrets:
