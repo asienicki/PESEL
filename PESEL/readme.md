@@ -1,21 +1,35 @@
-﻿## Powszechny Elektroniczny System Ewidencji Ludności (PESEL) 
-Biblioteka umożliwia walidację numeru PESEL.
-[![NuGet](https://img.shields.io/nuget/v/PESEL.svg)](https://www.nuget.org/packages/PESEL/) 
+## PESEL (Universal Electronic System for Population Registration in Poland)
 
-### Dokumentacja
-- [Walidacja z użyciem atrybutów System.ComponentModel.DataAnnotation](https://github.com/asienicki/PESEL/blob/master/PESEL.System.ComponentModel.DataAnnotations/readME.md)
-- [Walidacja numeru PESEL z wykorzystaniem biblioteki PESEL.FluentValidation](https://github.com/asienicki/PESEL/blob/master/PESEL.FluentValidation/readME.md)
-- [Generowanie numerów PESEL](https://github.com/asienicki/PESEL/blob/master/PESEL.Generator/readME.md)
+A .NET library for **PESEL number validation**.
 
-### Instalacja biblioteki
-Biblioteka znajduje się w repozytorium ["NuGet Gallery"](https://www.nuget.org/packages/PESEL). Paczkę można zainstalować wykonując poniższe polecenie:
-```
+[![NuGet](https://img.shields.io/nuget/v/PESEL.svg)](https://www.nuget.org/packages/PESEL/)
+
+---
+
+## Documentation
+
+- [Validation using System.ComponentModel.DataAnnotations](https://github.com/asienicki/PESEL/blob/master/PESEL.System.ComponentModel.DataAnnotations/readME.md)
+- [PESEL validation with FluentValidation](https://github.com/asienicki/PESEL/blob/master/PESEL.FluentValidation/readME.md)
+- [PESEL number generation](https://github.com/asienicki/PESEL/blob/master/PESEL.Generator/readME.md)
+
+---
+
+## Installation
+
+The library is available on the [NuGet Gallery](https://www.nuget.org/packages/PESEL).
+
+```powershell
 Install-Package PESEL
 ```
-### Walidacja pesel
-PESEL można zwalidować przy użyciu klasy **PeselValidator** lub atrybutu **PeselAttribute** w którym można dekorować właściwości modelu.
 
-#### Wykorzystanie klasy PeselValidator
+---
+
+## PESEL Validation
+
+A PESEL number can be validated using the **PeselValidator** class or the **PeselAttribute**, which can be applied to model properties.
+
+### Using `PeselValidator`
+
 ```csharp
 var validator = new PeselValidator();
 
@@ -25,78 +39,120 @@ var validationResult = validator.Validate(entity);
 
 Assert.IsTrue(validationResult.IsValid);
 ```
-Obiekt ValidationResult przechowuje również informację o strukturze PESEL. Można z niej pobrać płeć oraz datę urodzenia.
 
-### Referencje do algorytmu wyliczającego poprawność numeru PESEL - źródła
-https://obywatel.gov.pl/dokumenty-i-dane-osobowe/czym-jest-numer-pesel
-https://4programmers.net/Algorytmy/PESEL_-_wszystko,_co_o_nim_mo%C5%BCesz_wiedzie%C4%87
-http://www.szewo.com/php/pesel.phtml
-http://zylla.wipos.p.lodz.pl/ut/pesel.html
-https://pl.wikipedia.org/wiki/PESEL
+The `ValidationResult` object also contains parsed information extracted from the PESEL number, such as **gender** and **date of birth**.
 
-### Data urodzenia
-Numeryczny zapis daty urodzenia przedstawiony jest w następującym porządku: dwie ostatnie cyfry roku, miesiąc i dzień. Dla odróżnienia poszczególnych stuleci przyjęto następującą metodę kodowania:
+---
 
-dla osób urodzonych w latach 1900 do 1999 – miesiąc zapisywany jest w sposób naturalny, tzn. dwucyfrowo od 01 do 12
-dla osób urodzonych w innych latach niż 1900–1999 dodawane są do numeru miesiąca następujące wielkości:
-dla lat 1800–1899 – 80
-dla lat 2000–2099 – 20
-dla lat 2100–2199 – 40
-dla lat 2200–2299 – 60
+## Algorithm References
 
+- https://obywatel.gov.pl/dokumenty-i-dane-osobowe/czym-jest-numer-pesel
+- https://4programmers.net/Algorytmy/PESEL_-_everything_you_need_to_know
+- http://www.szewo.com/php/pesel.phtml
+- http://zylla.wipos.p.lodz.pl/ut/pesel.html
+- https://en.wikipedia.org/wiki/PESEL
 
-### Płeć
-Informacja o płci osoby, której zestaw informacji jest identyfikowany, zawarta jest na 10 - (przedostatniej) pozycji numeru PESEL.
+---
 
-cyfry 0, 2, 4, 6, 8 – oznaczają płeć żeńską
-cyfry 1, 3, 5, 7, 9 – oznaczają płeć męską
-Po zmianie płci przydzielany jest nowy numer PESEL.
+## Date of Birth Encoding
 
-### Cyfra kontrolna i sprawdzanie poprawności numeru
-Jedenasta cyfra jest cyfrą kontrolną, służącą do wychwytywania przekłamań numeru. 
-Jest ona generowana na podstawie pierwszych dziesięciu cyfr. 
-Aby sprawdzić czy dany numer PESEL jest prawidłowy, należy, zakładając, że litery a-j to kolejne cyfry numeru od lewej, obliczyć wyrażenie:
+The date of birth is encoded numerically as:
+
+```
+YYMMDD
+```
+
+To distinguish between centuries, the following encoding rules are used:
+
+- **1900–1999** → month encoded normally (`01–12`)
+- **1800–1899** → month + 80
+- **2000–2099** → month + 20
+- **2100–2199** → month + 40
+- **2200–2299** → month + 60
+
+---
+
+## Gender
+
+Gender information is encoded in the **10th digit** (the second-to-last digit) of the PESEL number:
+
+- `0, 2, 4, 6, 8` → female  
+- `1, 3, 5, 7, 9` → male  
+
+After a legal gender change, a **new PESEL number is issued**.
+
+---
+
+## Checksum Digit and Validation
+
+The **11th digit** is a checksum digit used to detect errors.
+It is calculated based on the first ten digits.
+
+Let `a–j` represent consecutive digits of the PESEL number.
+The checksum is calculated as:
 
 ```
 9×a + 7×b + 3×c + 1×d + 9×e + 7×f + 3×g + 1×h + 9×i + 7×j
 ```
-Jeżeli ostatnia cyfra otrzymanego wyniku nie jest równa cyfrze kontrolnej, to znaczy, że numer zawiera błąd.
 
-Przykład dla numeru PESEL 44051401358:
+If the last digit of the result does not match the checksum digit, the PESEL number is invalid.
+
+### Example
+
+For the PESEL number `44051401358`:
+
 ```
 9×4 + 7×4 + 3×0 + 1×5 + 9×1 + 7×4 + 3×0 + 1×1 + 9×3 + 7×5 = 169
 ```
-Wyznaczamy resztę z dzielenia sumy przez 10:
-```
-169:10 = 16 reszta = 9
-```
-Wynik 9 nie jest równy ostatniej cyfrze numeru PESEL, czyli 8, więc numer jest błędny.
 
-Metoda równoważna
+```
+169 % 10 = 9
+```
 
-Powyższa metoda sprowadza się do obliczenia sumy:
+Since `9 ≠ 8`, the PESEL number is invalid.
+
+---
+
+## Equivalent Validation Method
+
+An equivalent method uses the following weighted sum:
+
 ```
 1×a + 3×b + 7×c + 9×d + 1×e + 3×f + 7×g + 9×h + 1×i + 3×j + 1×k
 ```
-(gdzie litery oznaczają kolejne cyfry numeru), a następnie sprawdzenia czy reszta z dzielenia przez 10 jest zerem. 
-Innymi słowy, jeśli ostatnia cyfra otrzymanej sumy jest zerem, to numer PESEL jest poprawny, w przeciwnym razie numer jest błędny.
 
-Cechy specyficzne algorytmu sprawdzania
+If the last digit of the result is `0`, the PESEL number is valid.
+Otherwise, it is invalid.
 
-Algorytm ma pewną wadę w przydziale wag do poszczególnych elementów,
-która powoduje, że gdy zamienimy rok z dniem (zamieniając zapis z rr-mm-dd na dd-mm-rr) 
-otrzymamy identyczną sumę kontrolną jak w numerze z poprawnym zapisem. 
-Ten Algorytm nie sprawdza sensowności danych.
+---
 
-Z zasady działania cyfry kontrolnej wynika, że w przypadku zamazania którejkolwiek cyfry w numerze PESEL można tę cyfrę odtworzyć.
+## Algorithm Limitations
 
-### Błędy w nadawaniu numeru PESEL
-W praktyce zdarzają się (a przynajmniej zdarzały i wciąż istnieją) numery PESEL z błędami. 
-Błędy w dacie zwykle były zauważane i poprawiane od razu, lecz zdarzały się też powtórzenia numeru porządkowego, 
-błędy w określeniu płci i błędne cyfry kontrolne, 
-które zostały wychwycone po latach przy okazji wprowadzania numeru PESEL do komputerowych baz danych. 
-W związku z tym nie można zakładać, że wynik sprawdzania jednoznacznie określa istnienie bądź nieistnienie podanego numeru PESEL.
+The checksum algorithm has known limitations:
 
-Numer PESEL można zmienić. 
-Powodem do zmiany są przypadki, gdy nastąpiła zmiana płci, osoba ma nowy akt urodzenia lub decyzja urzędu okazała się błędna.
-W wyniku błędów urzędników w 2012 roku ten sam numer nadano różnym osobom w 2 tys. przypadków.
+- swapping year and day (`yy-mm-dd` ↔ `dd-mm-yy`) may produce the same checksum
+- the algorithm does **not validate semantic correctness** of the data
+
+Due to the checksum properties, a missing digit can sometimes be reconstructed.
+
+---
+
+## Errors in PESEL Assignment
+
+In practice, PESEL numbers with errors have existed, including:
+
+- incorrect birth dates
+- duplicated serial numbers
+- incorrect gender encoding
+- invalid checksum digits
+
+Some of these issues were discovered years later during data migration.
+Therefore, a successful checksum validation **does not guarantee** that a PESEL number was officially assigned.
+
+A PESEL number can be changed in cases such as:
+
+- legal gender change
+- issuance of a new birth certificate
+- administrative errors
+
+In 2012, administrative mistakes resulted in the same PESEL number being assigned to different individuals in approximately 2,000 cases.

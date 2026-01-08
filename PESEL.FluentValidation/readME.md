@@ -1,22 +1,33 @@
-﻿## Powszechny Elektroniczny System Ewidencji Ludności (PESEL) 
-Biblioteka umożliwia użycie gotowej metody do zwalidowania numeru PESEL, rozrzeszając bibliotekę do walidacji FluentValidation.
+## PESEL.FluentValidation
 
-[![NuGet](https://img.shields.io/nuget/v/PESEL.svg)](https://www.nuget.org/packages/PESEL/) 
+Integration package providing **PESEL number validation** using the
+[FluentValidation](https://github.com/FluentValidation/FluentValidation) library.
 
-### Dokumentacja
-- [Dokumentacja biblioteki PESEL](https://github.com/asienicki/PESEL/blob/master/PESEL/readme.md)
-- [Walidacja z użyciem atrybutów System.ComponentModel.DataAnnotation](https://github.com/asienicki/PESEL/blob/master/PESEL.System.ComponentModel.DataAnnotations/readME.md)
-- [Generowanie numerów PESEL](https://github.com/asienicki/PESEL/blob/master/PESEL.Generator/readME.md)
+[![NuGet](https://img.shields.io/nuget/v/PESEL.FluentValidation.svg)](https://www.nuget.org/packages/PESEL.FluentValidation/)
 
-### Instalacja biblioteki
-Biblioteka znajduje się w repozytorium ["NuGet Gallery"](https://www.nuget.org/packages/FluentValidation.PESEL). 
-Paczkę można zainstalować wykonując poniższe polecenie:
-```
+---
+
+## Documentation
+
+- [PESEL core library](https://github.com/asienicki/PESEL/blob/master/PESEL/readme.md)
+- [DataAnnotations integration](https://github.com/asienicki/PESEL/blob/master/PESEL.System.ComponentModel.DataAnnotations/readME.md)
+- [PESEL number generation](https://github.com/asienicki/PESEL/blob/master/PESEL.Generator/readME.md)
+
+---
+
+## Installation
+
+The package is available on the [NuGet Gallery](https://www.nuget.org/packages/PESEL.FluentValidation).
+
+```powershell
 Install-Package PESEL.FluentValidation
 ```
-### Przykładowe użycie biblioteki FluentValidation.PESEL
 
-```cs
+---
+
+## FluentValidation Usage Example
+
+```csharp
 using FluentValidation;
 using FluentValidation.PESEL;
 
@@ -33,4 +44,3 @@ public class CustomerValidator : AbstractValidator<Customer>
     }
 }
 ```
-
