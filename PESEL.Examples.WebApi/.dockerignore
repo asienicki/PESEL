@@ -1,0 +1,7 @@
+bin/
+obj/
+.vs/
+Dockerfile.vs
+docker-compose.yml
+*.csproj.user
+.git/

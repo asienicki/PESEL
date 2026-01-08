@@ -159,12 +159,13 @@ jobs:
       - name: Build & push Docker image (RC)
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: Dockerfile
+          context: ./PESEL.Examples.WebApi
+          file: ./PESEL.Examples.WebApi/Dockerfile
           push: true
           tags: |
             ghcr.io/asienicki/pesel:rc
             ghcr.io/asienicki/pesel:${{ steps.version.outputs.version }}
+
 
       - name: Tag RC
         run: |
