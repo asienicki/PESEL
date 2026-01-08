@@ -1,9 +1,10 @@
-using PESEL;
 using PESEL.Examples.WebApi.Models;
 using PESEL.Models;
 using PESEL.Validators.Impl;
 using Scalar.AspNetCore;
 using System.Reflection;
+
+namespace PESEL.Examples.WebApi.Extensions;
 
 public static class PeselEndpoints
 {

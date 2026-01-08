@@ -1,36 +1,25 @@
-## Branching & Release Flow
+# Contributing
 
-```mermaid
-flowchart LR
-  subgraph Development
-    FEAT[feat/*]
-    FIX[fix/*]
-  end
+Thank you for contributing to this project.
+This document describes how to work with the repository and follow the established process.
 
-  MASTER[master]
-  RC[rc]
-  RELEASE[release]
+---
 
-  NUGET_RC[(NuGet\npre-release)]
-  NUGET_REL[(NuGet\nrelease)]
+## Development Workflow
 
-  %% Development flow
-  FEAT -->|PR| MASTER
-  FIX  -->|PR| MASTER
+- Create short-lived branches:
+  - `feat/*`
+  - `fix/*`
+- Open a Pull Request targeting `master`
+- Ensure CI checks are green before merge
 
-  %% Promotion flow
-  MASTER -->|PR| RC
-  RC     -->|PR| RELEASE
+---
 
-  %% Publishing
-  RC      -->|publish RC| NUGET_RC
-  RELEASE -->|publish| NUGET_REL
+## Release Process (Overview)
 
-  %% Guards / blocked paths
-  FEAT -. blocked .-> RC
-  FEAT -. blocked .-> RELEASE
-  FIX  -. blocked .-> RC
-  FIX  -. blocked .-> RELEASE
-  MASTER -. blocked .-> RELEASE
+- Promotion to `rc` and `release` is **manual** and handled by maintainers.
+- Contributors do not create or merge into `rc` or `release` branches.
+- Released artifacts are published automatically by CI/CD.
 
-```
+For the full release architecture and rationale, see:
+- [Branching & Release Flow](docs/release-process.md)

@@ -19,7 +19,10 @@
             Assert.IsFalse(result.IsValid);
         }
 
-#pragma warning disable S3242 // Change return type to concrete type for performance
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Performance",
+            "S3242:Change return type to concrete type for performance",
+            Justification = "Public/contract API – multiple implementations")]
         private static IPeselValidationResult Validate(string pesel)
         {
             var validator = new PeselValidator();
@@ -27,6 +30,5 @@
 
             return validator.Validate(entity);
         }
-#pragma warning restore S3242
     }
 }
