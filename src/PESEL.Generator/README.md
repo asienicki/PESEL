@@ -7,9 +7,9 @@ A .NET library for **generating valid PESEL numbers**.
 ---
 
 ## Documentation
-- [PESEL core library](../PESEL/readme.md)
-- [DataAnnotations integration](../PESEL.System.ComponentModel.DataAnnotations/readme.md)
-- [FluentValidation integration](../PESEL.FluentValidation/readme.md)
+- [PESEL core library](../PESEL/README.md)
+- [DataAnnotations integration](../PESEL.System.ComponentModel.DataAnnotations/README.md)
+- [FluentValidation integration](../PESEL.FluentValidation/README.md)
 
 ---
 
