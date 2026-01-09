@@ -31,14 +31,14 @@ jobs:
             nuget-${{ runner.os }}-
 
       - name: Restore
-        run: dotnet restore PESEL.sln
+        run: dotnet restore PESEL.slnx
 
       - name: Build
-        run: dotnet build PESEL.sln --no-restore
+        run: dotnet build PESEL.slnx --no-restore
 
       - name: Test with coverage (opencover)
         run: |
-          dotnet test PESEL.sln \
+          dotnet test PESEL.slnx \
             --no-build \
             /p:CollectCoverage=true \
             /p:CoverletOutput=$(pwd)/coverage/coverage \

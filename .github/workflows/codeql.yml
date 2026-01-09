@@ -23,7 +23,7 @@ jobs:
         languages: csharp
 
     - name: Build
-      run: dotnet build PESEL.sln
+      run: dotnet build PESEL.slnx
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4

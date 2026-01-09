@@ -3,7 +3,7 @@
 ## Running with Docker Compose
 
 The example can be started locally using Docker Compose.
-- [docker-compose.yml](../PESEL.Examples.WebApi/docker-compose.yml)
+- [docker-compose.yml](../examples/PESEL.Examples.WebApi/docker-compose.yml)
 
 Run:
 ```

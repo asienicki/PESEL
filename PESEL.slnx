@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/docs/">
+    <File Path="LICENSE.md" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/examples/">
+    <Project Path="examples/PESEL.Examples.WebApi/PESEL.Examples.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PESEL.Tests/PESEL.Tests.csproj" />
+  </Folder>
+  <Project Path="src/PESEL.FluentValidation/PESEL.FluentValidation.csproj" />
+  <Project Path="src/PESEL.Generator/PESEL.Generator.csproj" />
+  <Project Path="src/PESEL.System.ComponentModel.DataAnnotations/PESEL.System.ComponentModel.DataAnnotations.csproj" />
+  <Project Path="src/PESEL/PESEL.csproj" />
+</Solution>
