@@ -14,7 +14,6 @@ A .NET library for **PESEL number validation**.
 ---
 
 ## Installation
-
 The library is available on the [NuGet Gallery](https://www.nuget.org/packages/PESEL).
 
 ```powershell
@@ -24,7 +23,6 @@ Install-Package PESEL
 ---
 
 ## PESEL Validation
-
 A PESEL number can be validated using the **PeselValidator** class or the **PeselAttribute**, which can be applied to model properties.
 
 ### Using `PeselValidator`
@@ -44,7 +42,6 @@ The `ValidationResult` object also contains parsed information extracted from th
 ---
 
 ## Algorithm References
-
 - https://obywatel.gov.pl/dokumenty-i-dane-osobowe/czym-jest-numer-pesel
 - https://4programmers.net/Algorytmy/PESEL_-_everything_you_need_to_know
 - http://www.szewo.com/php/pesel.phtml
@@ -54,7 +51,6 @@ The `ValidationResult` object also contains parsed information extracted from th
 ---
 
 ## Date of Birth Encoding
-
 The date of birth is encoded numerically as:
 
 ```
@@ -72,7 +68,6 @@ To distinguish between centuries, the following encoding rules are used:
 ---
 
 ## Gender
-
 Gender information is encoded in the **10th digit** (the second-to-last digit) of the PESEL number:
 
 - `0, 2, 4, 6, 8` → female  
@@ -83,7 +78,6 @@ After a legal gender change, a **new PESEL number is issued**.
 ---
 
 ## Checksum Digit and Validation
-
 The **11th digit** is a checksum digit used to detect errors.
 It is calculated based on the first ten digits.
 
@@ -97,7 +91,6 @@ The checksum is calculated as:
 If the last digit of the result does not match the checksum digit, the PESEL number is invalid.
 
 ### Example
-
 For the PESEL number `44051401358`:
 
 ```
@@ -113,7 +106,6 @@ Since `9 ≠ 8`, the PESEL number is invalid.
 ---
 
 ## Equivalent Validation Method
-
 An equivalent method uses the following weighted sum:
 
 ```
@@ -126,7 +118,6 @@ Otherwise, it is invalid.
 ---
 
 ## Algorithm Limitations
-
 The checksum algorithm has known limitations:
 
 - swapping year and day (`yy-mm-dd` ↔ `dd-mm-yy`) may produce the same checksum
@@ -137,7 +128,6 @@ Due to the checksum properties, a missing digit can sometimes be reconstructed.
 ---
 
 ## Errors in PESEL Assignment
-
 In practice, PESEL numbers with errors have existed, including:
 
 - incorrect birth dates
