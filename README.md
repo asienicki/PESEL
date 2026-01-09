@@ -34,10 +34,10 @@ A .NET library for **validation** and **generation** of PESEL numbers, with modu
 ## 📖 Documentation
 
 ### Library usage
-- [PESEL core](PESEL/readme.md)
-- [DataAnnotations integration](PESEL.System.ComponentModel.DataAnnotations/readME.md)
-- [FluentValidation integration](PESEL.FluentValidation/readME.md)
-- [PESEL generator](PESEL.Generator/readME.md)
+- [PESEL core](src/PESEL/readme.md)
+- [DataAnnotations integration](src/PESEL.System.ComponentModel.DataAnnotations/readME.md)
+- [FluentValidation integration](src/PESEL.FluentValidation/readME.md)
+- [PESEL generator](src/PESEL.Generator/readME.md)
 
 ### Project & process
 - [Branching & Release Flow](docs/release-process.md)

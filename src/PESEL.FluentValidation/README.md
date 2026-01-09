@@ -8,10 +8,9 @@ Integration package providing **PESEL number validation** using the
 ---
 
 ## Documentation
-
-- [PESEL core library](https://github.com/asienicki/PESEL/blob/master/PESEL/readme.md)
-- [DataAnnotations integration](https://github.com/asienicki/PESEL/blob/master/PESEL.System.ComponentModel.DataAnnotations/readME.md)
-- [PESEL number generation](https://github.com/asienicki/PESEL/blob/master/PESEL.Generator/readME.md)
+- [PESEL core library](../PESEL/readme.md)
+- [DataAnnotations integration](../PESEL.System.ComponentModel.DataAnnotations/readme.md)
+- [PESEL number generation](../PESEL.Generator/readme.md)
 
 ---
 
