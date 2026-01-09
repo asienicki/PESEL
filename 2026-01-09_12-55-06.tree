@@ -1,0 +1,107 @@
+﻿├── docs
+├── examples
+│   └── PESEL.Examples.WebApi
+│       ├── Extensions
+│       │   ├── PeselEndpoints.cs
+│       │   └── ScalarDocumentationExtensions.cs
+│       ├── Models
+│       │   └── VersionInfo.cs
+│       ├── Properties
+│       └── Program.cs
+├── src
+│   ├── PESEL
+│   │   ├── Exceptions
+│   │   │   └── InvalidChecksumInputException.cs
+│   │   ├── Models
+│   │   │   ├── Gender.cs
+│   │   │   ├── Pesel.cs
+│   │   │   └── PeselEntity.cs
+│   │   ├── ValidationResults
+│   │   │   ├── Impl
+│   │   │   │   ├── CharsNotDigitValidationResult.cs
+│   │   │   │   ├── FailValidationResult.cs
+│   │   │   │   ├── InvalidCheckSumValidationResult.cs
+│   │   │   │   ├── InvalidDateValidationResult.cs
+│   │   │   │   ├── InvalidGenderValidationResult.cs
+│   │   │   │   ├── InvalidLengthValidationResult.cs
+│   │   │   │   ├── InvalidMonthValidationResult.cs
+│   │   │   │   ├── NullEntityValidationResult.cs
+│   │   │   │   ├── OkValidationResult.cs
+│   │   │   │   ├── StringIsNullOrEmptyValidationResult.cs
+│   │   │   │   └── ValidationResult.cs
+│   │   │   └── IValidationResult.cs
+│   │   ├── Validators
+│   │   │   ├── Factories
+│   │   │   │   ├── Impl
+│   │   │   │   │   └── FactoryValidator.cs
+│   │   │   │   └── IFactoryValidator.cs
+│   │   │   ├── Impl
+│   │   │   │   ├── BirthDateValidator.cs
+│   │   │   │   ├── CompositeValidator.cs
+│   │   │   │   ├── DigitValidator.cs
+│   │   │   │   ├── GenderValidator.cs
+│   │   │   │   ├── LengthValidator.cs
+│   │   │   │   ├── PeselValidator.cs
+│   │   │   │   ├── RandomNumbersValidator.cs
+│   │   │   │   ├── StringIsNullOrEmptyValidator.cs
+│   │   │   │   └── SumControlNumberValidator.cs
+│   │   │   └── IValidator.cs
+│   │   └── PeselChecksumCalculator.cs
+│   ├── PESEL.FluentValidation
+│   │   └── PeselFluentValidator.cs
+│   ├── PESEL.Generator
+│   │   └── PeselGenerator.cs
+│   └── PESEL.System.ComponentModel.DataAnnotations
+│       └── Attributes
+│           └── PeselAttribute.cs
+├── TestResults
+└── tests
+    └── PESEL.Tests
+        ├── ContractTests
+        │   ├── BirthDateValidatorContractTests.cs
+        │   ├── GenderValidatorContractTests.cs
+        │   └── RandomNumbersValidatorContractTests.cs
+        ├── DomainTests
+        │   ├── Algorithms
+        │   │   ├── CheckSumCalculatorTests.cs
+        │   │   ├── PeselChecksumCalculatorFailTests.cs
+        │   │   ├── PeselGeneratorBuildPeselsFromRandomDigitsTests.cs
+        │   │   └── PeselGeneratorCalculateControlSumTests.cs
+        │   ├── Validators
+        │   │   ├── BaseValidatorTests.cs
+        │   │   ├── BirthDateValidatorTests.cs
+        │   │   ├── CompositeValidatorTests.cs
+        │   │   ├── DigitValidatorTests.cs
+        │   │   ├── GenderValidatorTests.cs
+        │   │   ├── LengthValidatorTests.cs
+        │   │   ├── RandomNumbersValidatorTests.cs
+        │   │   ├── StringIsNullOrEmptyValidatorTests.cs
+        │   │   └── SumControlNumberValidatorTests.cs
+        │   ├── PeselBirthDateProjectionTests.cs
+        │   ├── PeselBirthDateValidatorTests.cs
+        │   ├── PeselEmptyValidatorTests.cs
+        │   ├── PeselGarbageValidatorTests.cs
+        │   ├── PeselGenderTests.cs
+        │   ├── PeselGeneralValidTests.cs
+        │   ├── PeselLengthValidatorTests.cs
+        │   └── PeselStructureProjectionTests.cs
+        ├── IntegrationTests
+        │   ├── DataAnnotations
+        │   │   └── ModelWithPeselAttributeOverProperty.cs
+        │   ├── ModelValidationTests.cs
+        │   └── PeselGeneratorIntegrationTests.cs
+        ├── SmokeTests
+        │   ├── PeselCorpusSmokeTests.cs
+        │   ├── PeselPipelineSmokeTests.cs
+        │   └── PeselSmokeTests.cs
+        ├── TestBase
+        │   └── BasePeselValidatorTest.cs
+        └── TestData
+            ├── PeselBirthDateProjectionTestData.cs
+            ├── PeselBirthDateTestData.cs
+            ├── PeselCorpusTestData.cs
+            ├── PeselEmptyTestData.cs
+            ├── PeselGarbageTestData.cs
+            ├── PeselGenderTestData.cs
+            ├── PeselLengthTestData.cs
+            └── PeselValidGeneralTestData.cs
