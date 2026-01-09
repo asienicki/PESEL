@@ -83,8 +83,8 @@ jobs:
 
       - name: Build & Test
         run: |
-          dotnet build -c Release /p:Version=${{ steps.version.outputs.version }}
-          dotnet test  -c Release /p:Version=${{ steps.version.outputs.version }}
+          dotnet build PESEL.slnx -c Release /p:Version=${{ steps.version.outputs.version }}
+          dotnet test  PESEL.slnx -c Release /p:Version=${{ steps.version.outputs.version }}
 
       - name: Pack
         run: |

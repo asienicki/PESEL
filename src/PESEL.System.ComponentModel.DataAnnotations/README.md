@@ -8,9 +8,9 @@ Integration package providing **PESEL number validation** using
 ---
 
 ## Documentation
-- [PESEL core library](../PESEL/readme.md)
-- [PESEL validation with FluentValidation](../PESEL.FluentValidation/readme.md)
-- [PESEL number generation](../PESEL.Generator/readme.md)
+- [PESEL core library](../PESEL/README.md)
+- [PESEL validation with FluentValidation](../PESEL.FluentValidation/README.md)
+- [PESEL number generation](../PESEL.Generator/README.md)
 
 ---
 
