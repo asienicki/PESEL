@@ -22,10 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PESEL.FluentValidation\PESEL.FluentValidation.csproj" />
-    <ProjectReference Include="..\PESEL.Generator\PESEL.Generator.csproj" />
-    <ProjectReference Include="..\PESEL.System.ComponentModel.DataAnnotations\PESEL.System.ComponentModel.DataAnnotations.csproj" />
-    <ProjectReference Include="..\PESEL\PESEL.csproj" />
+    <ProjectReference Include="..\..\src\PESEL.FluentValidation\PESEL.FluentValidation.csproj" />
+    <ProjectReference Include="..\..\src\PESEL.Generator\PESEL.Generator.csproj" />
+    <ProjectReference Include="..\..\src\PESEL.System.ComponentModel.DataAnnotations\PESEL.System.ComponentModel.DataAnnotations.csproj" />
+    <ProjectReference Include="..\..\src\PESEL\PESEL.csproj" />
   </ItemGroup>
 
 </Project>

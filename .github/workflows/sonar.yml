@@ -52,7 +52,7 @@ jobs:
             /d:sonar.exclusions="**/bin/**,**/obj/**"
 
       - name: Build (Sonar)
-        run: dotnet build PESEL.sln
+        run: dotnet build PESEL.slnx
 
       - name: Sonar End
         env:
