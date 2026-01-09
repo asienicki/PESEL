@@ -1,4 +1,4 @@
-name: Release RC NuGet
+name: Release RC
 
 on:
   push:
@@ -119,10 +119,10 @@ jobs:
       - name: Build & Test
         run: |
           echo "Building with version: ${{ steps.version.outputs.version }}"
-          dotnet build -c Release /p:Version=${{ steps.version.outputs.version }}
+          dotnet build PESEL.slnx -c Release /p:Version=${{ steps.version.outputs.version }}
 
           echo "Testing with version: ${{ steps.version.outputs.version }}"
-          dotnet test -c Release /p:Version=${{ steps.version.outputs.version }}
+          dotnet test PESEL.slnx -c Release /p:Version=${{ steps.version.outputs.version }}
 
       - name: Pack
         run: |
