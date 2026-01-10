@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/docs/">
+    <File Path="docs/examples-webapi.md" />
+    <File Path="docs/release-process.md" />
     <File Path="LICENSE.md" />
     <File Path="README.md" />
   </Folder>
