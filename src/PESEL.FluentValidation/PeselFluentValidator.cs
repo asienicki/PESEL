@@ -1,7 +1,8 @@
-﻿using PESEL.Models;
+﻿using FluentValidation;
+using PESEL.Models;
 using PESEL.Validators.Factories.Impl;
 
-namespace FluentValidation.PESEL
+namespace PESEL.FluentValidation
 {
     public static class PeselFluentValidator
     {
