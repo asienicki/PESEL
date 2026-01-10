@@ -1,4 +1,4 @@
-﻿using PESEL.System.ComponentModel.DataAnnotations;
+﻿using PESEL.System.ComponentModel.DataAnnotations.Attributes;
 
 namespace PESEL.Tests.IntegrationTests.DataAnnotations
 {

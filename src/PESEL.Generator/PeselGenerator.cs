@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace PESEL
+﻿namespace PESEL.Generator
 {
     using PESEL.Models;
     using System;

@@ -1,4 +1,6 @@
-﻿namespace PESEL.Tests.DomainTests.Algorithms
+﻿using PESEL.Generator;
+
+namespace PESEL.Tests.DomainTests.Algorithms
 {
     [TestClass]
     [TestCategory("Domain")]

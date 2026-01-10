@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
-using FluentValidation.PESEL;
+using PESEL.FluentValidation;
+using PESEL.Generator;
 
 namespace PESEL.Tests.DomainTests.Algorithms
 {

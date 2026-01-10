@@ -1,4 +1,6 @@
-﻿namespace PESEL.Tests.DomainTests.Algorithms
+﻿using PESEL.Generator;
+
+namespace PESEL.Tests.DomainTests.Algorithms
 {
     [TestClass]
     [TestCategory("Domain")]
@@ -77,7 +79,7 @@
             var pesel = PeselGenerator.GenerateLuckyCore(date, random, selector);
 
             // Assert
-            Assert.IsTrue(pesel.StartsWith("740401"));
+            Assert.StartsWith("740401", pesel);
         }
     }
 
