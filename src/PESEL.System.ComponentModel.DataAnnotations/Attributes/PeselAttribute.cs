@@ -3,7 +3,7 @@ using PESEL.Validators.Impl;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PESEL.System.ComponentModel.DataAnnotations
+namespace PESEL.System.ComponentModel.DataAnnotations.Attributes
 {
     [AttributeUsage(
     AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter,

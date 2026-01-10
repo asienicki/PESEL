@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using PESEL.Generator;
+using System.Reflection;
 
 namespace PESEL.Tests.DomainTests.Algorithms
 {

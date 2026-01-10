@@ -1,4 +1,5 @@
-﻿using PESEL.Models;
+﻿using PESEL.Generator;
+using PESEL.Models;
 
 namespace PESEL.Tests.DomainTests.Algorithms
 {
