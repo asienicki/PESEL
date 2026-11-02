@@ -22,30 +22,11 @@ jobs:
         with:
           dotnet-version: ${{ inputs.dotnet_version }}
 
-      - name: Cache NuGet
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            nuget-${{ runner.os }}-
-
       - name: Restore
         run: dotnet restore PESEL.slnx
 
       - name: Build
-        run: dotnet build PESEL.slnx --no-restore
+        run: dotnet build PESEL.slnx --configuration Release --no-restore
 
-      - name: Test with coverage (opencover)
-        run: |
-          dotnet test PESEL.slnx \
-            --no-build \
-            /p:CollectCoverage=true \
-            /p:CoverletOutput=$(pwd)/coverage/coverage \
-            /p:CoverletOutputFormat=opencover
-
-      - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage
+      - name: Test
+        run: dotnet test tests/PESEL.Tests/PESEL.Tests.csproj --configuration Release --no-build --no-restore
