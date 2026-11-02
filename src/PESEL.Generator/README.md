@@ -30,7 +30,5 @@ The library allows generating **all valid PESEL number combinations** for a give
 PESEL numbers are generated using the `Generate` method from the `PeselGenerator` class.
 
 ```csharp
-var generator = new PeselGenerator();
-
-var peselList = generator.Generate(DateTime.Now.AddYears(-1));
+var peselList = PeselGenerator.Generate(DateTime.Now.AddYears(-1));
 ```
