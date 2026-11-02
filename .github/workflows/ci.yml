@@ -15,7 +15,9 @@ jobs:
     uses: ./.github/workflows/build-test.yml
 
   sonar:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    # TEMPORARILY DISABLED: SONAR_TOKEN authentication fails. Restore the original condition below once the token is fixed.
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: false
     needs: build-test
     uses: ./.github/workflows/sonar.yml
     secrets:
